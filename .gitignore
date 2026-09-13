@@ -39,3 +39,8 @@ _上传说明.txt
 *.user
 Thumbs.db
 desktop.ini
+
+# 本地推送助手（不属于仓库内容，别提交）
+双击我推送*
+_push/
+*.lnk

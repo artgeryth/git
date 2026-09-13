@@ -632,12 +632,21 @@ class App
         try
         {
             chat = new ChatWindow(this);
-            chat.TestSend("你好呀");
-            Pump(2600);
-            chat.TestSend("今天加班到现在，好累");
-            Pump(2600);
-            chat.TestSend("给我讲个笑话");
-            Pump(2600);
+            // 故意聊长一点：要出现滚动条，才能暴露「气泡滚了、文字没滚」这类问题
+            string[] chatProbes = Lang.IsEn
+                ? new string[] { "hey", "i'm tired", "tell me a joke", "what do you like", "it's raining",
+                                 "i'm bored", "can't sleep", "thanks", "i'm sad", "play a game",
+                                 "what are you doing", "say something funny" }
+                : new string[] { "你好呀", "今天加班到现在，好累", "给我讲个笑话", "你喜欢什么", "外面下雨了",
+                                 "好无聊", "我睡不着", "谢谢", "我好难过", "打游戏吗",
+                                 "你在干嘛呢", "讲个故事" };
+            foreach (string s in chatProbes)
+            {
+                chat.TestSend(s);
+                Pump(1500);
+            }
+            sb.AppendLine("  聊了 " + chatProbes.Length + " 轮，共 " + chat.Transcript.Count + " 条气泡" +
+                          (chat.Transcript.Count > 12 ? "（已经超出窗口高度 → 有滚动条）" : ""));
             foreach (ChatWindow.Turn t in chat.Transcript)
                 sb.AppendLine("  " + (t.Me ? "我" : PetName) + "：" + t.Text);
         }

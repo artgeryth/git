@@ -6,11 +6,6 @@
 >
 > 中文说明：[README.zh-CN.md](README.zh-CN.md) · 中文使用说明：`使用说明.txt`
 
-### 👉 [**Download for Windows**](https://github.com/artgeryth/git/releases/latest) · [all releases](https://github.com/artgeryth/git/releases)
-
-Grab `YayaDesktopPet-v1.0-win.zip`, unzip it anywhere, double-click `娅娅桌面宠物.exe`.
-Windows 7 or newer · no installer · no runtime to install.
-
 ![screenshot](docs/screenshot-main.png)
 
 ---
@@ -45,8 +40,7 @@ Windows 7 or newer · no installer · no runtime to install.
 
 ## 📦 Download & run
 
-1. Grab `YayaDesktopPet-v1.0-win.zip` from the [**latest release**](https://github.com/artgeryth/git/releases/latest)
-   (or browse [all releases](https://github.com/artgeryth/git/releases)).
+1. Grab `YayaDesktopPet-v1.0-win.zip` from the [Releases](../../releases) page.
 2. Unzip it anywhere (Desktop / D:\ is fine — **avoid `C:\Program Files`**, she needs to write her save file next to the exe).
 3. Double-click `娅娅桌面宠物.exe`.
 

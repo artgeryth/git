@@ -173,9 +173,9 @@ class ChatWindow : Form
         }
         if (thinking) total += (int)(34 * S);
         transcript.AutoScrollMinSize = new Size(0, total);
+        // 滚到底部（超出范围会被自动夹紧）。以前是设 VerticalScroll.Value，滚动位置不一定生效
+        transcript.AutoScrollPosition = new Point(0, total);
         transcript.Invalidate();
-        if (transcript.VerticalScroll.Visible)
-            transcript.VerticalScroll.Value = transcript.VerticalScroll.Maximum;
     }
 
     Font FontForBubble()
@@ -187,11 +187,16 @@ class ChatWindow : Form
     {
         g.SmoothingMode = SmoothingMode.AntiAlias;
         g.Clear(Color.White);
-        g.TranslateTransform(0, transcript.AutoScrollPosition.Y);
 
         int pad = (int)(10 * S);
         int w = transcript.ClientSize.Width - (int)(16 * S);
-        int y = (int)(8 * S);
+        int clientH = transcript.ClientSize.Height;
+        // 滚动用「显式 y 偏移」实现，**不要**用 g.TranslateTransform：
+        // 圆角气泡是 GDI+ 画的（跟着坐标变换走），文字是 TextRenderer 走的 GDI，
+        // 在带变换的 Graphics 上两者位置对不上 —— 对话一长、出现滚动条时就会
+        // 「气泡滚了、字没滚」，看起来是文字错位/重复、气泡空白。两边统一用绝对坐标最稳。
+        int y = (int)(8 * S) + transcript.AutoScrollPosition.Y;   // AutoScrollPosition.Y 是负数
+        var flags = TextFormatFlags.WordBreak | TextFormatFlags.NoPadding | TextFormatFlags.TextBoxControl;
 
         using (var f = FontForBubble())
         {
@@ -203,19 +208,20 @@ class ChatWindow : Form
             foreach (Turn t in turns)
             {
                 int maxW = (int)(w * 0.72f);
-                Size sz = TextRenderer.MeasureText(t.Text, f, new Size(maxW, 10000),
-                    TextFormatFlags.WordBreak | TextFormatFlags.NoPadding | TextFormatFlags.TextBoxControl);
+                Size sz = TextRenderer.MeasureText(t.Text, f, new Size(maxW, 10000), flags);
                 int bw = sz.Width + (int)(18 * S);
                 int bh = sz.Height + (int)(14 * S);
                 int bx = t.Me ? (w - bw) : pad;
                 var rect = new RectangleF(bx, y, bw, bh);
-                using (var path = RoundedRect(rect, 10 * S))
-                using (var b = new SolidBrush(t.Me ? Color.FromArgb(255, 226, 238) : Color.FromArgb(244, 243, 246)))
-                    g.FillPath(b, path);
-                TextRenderer.DrawText(g, t.Text, f,
-                    new Rectangle((int)rect.X + (int)(9 * S), (int)rect.Y + (int)(7 * S), sz.Width, sz.Height),
-                    Color.FromArgb(255, 55, 45, 55),
-                    TextFormatFlags.WordBreak | TextFormatFlags.NoPadding | TextFormatFlags.TextBoxControl);
+                if (rect.Bottom >= 0 && rect.Top <= clientH)      // 只画看得见的，省点力气
+                {
+                    using (var path = RoundedRect(rect, 10 * S))
+                    using (var b = new SolidBrush(t.Me ? Color.FromArgb(255, 226, 238) : Color.FromArgb(244, 243, 246)))
+                        g.FillPath(b, path);
+                    TextRenderer.DrawText(g, t.Text, f,
+                        new Rectangle((int)rect.X + (int)(9 * S), (int)rect.Y + (int)(7 * S), sz.Width, sz.Height),
+                        Color.FromArgb(255, 55, 45, 55), flags);
+                }
                 y += bh + (int)(8 * S);
             }
 
@@ -224,11 +230,14 @@ class ChatWindow : Form
                 int dots = (int)(DateTime.Now.TimeOfDay.TotalSeconds * 3) % 4;
                 string t = Lang.F("chat.thinkingFmt", App2.PetName, new string('…', Math.Max(1, dots)));
                 var rect = new RectangleF(pad, y, TextRenderer.MeasureText(t, f).Width + 20 * S, 26 * S);
-                using (var path = RoundedRect(rect, 10 * S))
-                using (var b = new SolidBrush(Color.FromArgb(244, 243, 246)))
-                    g.FillPath(b, path);
-                TextRenderer.DrawText(g, t, f, new Point((int)rect.X + (int)(9 * S), (int)rect.Y + (int)(5 * S)),
-                    Color.FromArgb(255, 130, 130, 140));
+                if (rect.Bottom >= 0 && rect.Top <= clientH)
+                {
+                    using (var path = RoundedRect(rect, 10 * S))
+                    using (var b = new SolidBrush(Color.FromArgb(244, 243, 246)))
+                        g.FillPath(b, path);
+                    TextRenderer.DrawText(g, t, f, new Point((int)rect.X + (int)(9 * S), (int)rect.Y + (int)(5 * S)),
+                        Color.FromArgb(255, 130, 130, 140));
+                }
             }
         }
     }
