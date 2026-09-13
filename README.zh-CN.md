@@ -4,6 +4,11 @@
 
 和 `学习系统` 里那只**不是同一个东西**——那只挂在网页里、管你学习；这只是独立软件，**不管你学习**，就是陪你闲聊。两边共用同一套立绘（娅娅），代码和进度互不相干。
 
+### 👉 [**点这里下载（Windows）**](https://github.com/artgeryth/git/releases/latest) · [所有版本](https://github.com/artgeryth/git/releases)
+
+下载 `YayaDesktopPet-v1.0-win.zip` → 解压到任意位置（**别放 `C:\Program Files`**）→ 双击 `娅娅桌面宠物.exe`。
+Windows 7 及以上 · 免安装 · 不需要装任何运行库 · 本地聊天模式全程不联网。
+
 ---
 
 ## 一、怎么用
