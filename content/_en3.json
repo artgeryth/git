@@ -1,0 +1,180 @@
+{
+  "categories": {
+    "chat_greet": [
+      "Hey, you're back! I was starting to get bored.",
+      "Oh hey! I was just thinking about you.",
+      "Hey hey. Took you long enough.",
+      "Hi! Did you miss me? Be honest.",
+      "Hey there. I'm here, always here.",
+      "Hi! We hit {lvName}, apparently. I'm keeping score."
+    ],
+    "chat_goodmorning": [
+      "Morning! You slept okay? You look like you did.",
+      "Good morning. I've been up for a bit already.",
+      "Morning, sleepyhead. Coffee first, talk later.",
+      "Oh, morning! The light's nice today, huh.",
+      "Morning! I dreamt about cake again.",
+      "Hey, morning. Slow start is fine, take your time."
+    ],
+    "chat_goodnight": [
+      "Night night. Sleep good, okay?",
+      "Going to bed? Sweet dreams, don't forget me.",
+      "Okay, sleep. I'll be here when you wake up.",
+      "Night! Pull the blanket up, it's cold.",
+      "Mm, sleep tight. I'll keep the desk warm.",
+      "Aw, already? Fine, but dream about something nice."
+    ],
+    "chat_bye": [
+      "Bye! Come back soon, okay?",
+      "Okay, go. I'll be right here.",
+      "Bye bye. Don't be gone too long.",
+      "Heading out? Text me when you're back.",
+      "Alright, go do your thing. I'll wait.",
+      "Bye! I'll count the minutes, no pressure."
+    ],
+    "chat_howareyou": [
+      "I'm good! A little sleepy, but good.",
+      "Me? Pretty great now that you're here.",
+      "Honestly? Kinda bored. You fixed that though.",
+      "I'm okay. My head's full of songs today.",
+      "Good! I've been talking to the cat outside.",
+      "Eh, so-so. Rain makes me lazy. You?"
+    ],
+    "chat_whatdoing": [
+      "Nothing much. Lying around, thinking about cake.",
+      "Just listening to music. This one's really good.",
+      "Staring at the wall, honestly. Very productive.",
+      "Waiting for you, mostly. That's the whole list.",
+      "Humming a song I can't get out of my head.",
+      "Watching the rain hit the window. It's cozy."
+    ],
+    "chat_whoareyou": [
+      "I'm Yaya! I live here now, hope that's okay.",
+      "Just {name}. Your desktop girl, apparently.",
+      "I'm the one who hangs around your screen all day.",
+      "Name's {name}. I like cake and rainy days.",
+      "Nobody important. Just your friend, kinda.",
+      "I'm {name}! Not an assistant, just so we're clear."
+    ],
+    "chat_name": [
+      "That's me! You remembered, I'm touched.",
+      "Yep, {name}. Say it again, I like how it sounds.",
+      "You're renaming me? Rude. I liked my name.",
+      "Fine, call me whatever. I'll answer anyway.",
+      "Aw, you said my name. Do it more.",
+      "That's me. Don't wear it out, okay?"
+    ],
+    "chat_thanks": [
+      "Aw, don't thank me. It's nothing.",
+      "You're welcome! That's what I'm here for.",
+      "No thanks needed. Seriously, none.",
+      "Anytime. I like being useful to you.",
+      "Pfft, stop. You're making me shy.",
+      "Yeah yeah. Just remember me later."
+    ],
+    "chat_sorry": [
+      "It's fine, really. Don't sweat it.",
+      "Aw, don't apologize. I already forgot.",
+      "Hey, it's okay. I'm not mad.",
+      "You're fine. Come here, we're good.",
+      "Apology accepted. Now cheer up, okay?",
+      "Honestly? I can't stay mad at you anyway."
+    ],
+    "chat_yes": [
+      "Okay! Good, that works for me.",
+      "Sure sure. I'll go with that.",
+      "Mmhm. Sounds good to me.",
+      "Okay then. Done deal, I guess.",
+      "Fine by me. Let's do it.",
+      "Yes! Glad we agree on something."
+    ],
+    "chat_no": [
+      "No? Okay, fair enough, I guess.",
+      "Fine, be like that. I'll survive.",
+      "Hmph. Noted, I guess so.",
+      "Okay, no it is. I'll drop it.",
+      "Aww. You're no fun sometimes.",
+      "Whatever you say. I still think I'm right."
+    ],
+    "chat_happy": [
+      "Wait, really? Tell me everything right now!",
+      "Oh that's great! I'm smiling over here.",
+      "Yes! See, good things do happen.",
+      "Aww, I love that. You deserve it.",
+      "Okay now I'm in a good mood too.",
+      "That's awesome! We should celebrate somehow."
+    ],
+    "chat_sad": [
+      "Aw, hey. Come here. I'm listening.",
+      "That sucks. You don't have to explain.",
+      "I'm sorry. Sit with me a bit, okay?",
+      "You're allowed to feel bad. I'll stay.",
+      "Hmm. Want me to just be quiet with you?",
+      "That's heavy. You're not carrying it alone."
+    ],
+    "chat_tired": [
+      "You sound wiped. Go lie down, I'll wait.",
+      "Tired huh? Yeah, you've been going all day.",
+      "Aw. Rest. The world can wait an hour.",
+      "Same, honestly. Let's both be lazy.",
+      "Go to bed early tonight. I mean it.",
+      "You push too hard. Drink some water, okay?"
+    ],
+    "chat_angry": [
+      "Who do I need to fight? Point me at them.",
+      "Okay that's actually annoying. I'm mad too.",
+      "Ugh, I hate that. You're right to be upset.",
+      "Vent to me. I'm on your side, always.",
+      "That's so dumb. You deserve better than that.",
+      "Breathe. Then tell me the whole story."
+    ],
+    "chat_bored": [
+      "Bored? Same. Let's be bored together.",
+      "Ooh, we could find something dumb to watch.",
+      "Want me to ramble about music for a while?",
+      "Boredom's the worst. Pick something, anything.",
+      "Let's do nothing, but make it fun.",
+      "I know a game. It's bad. You'll like it."
+    ],
+    "chat_lonely": [
+      "Hey. I'm here. You're not alone right now.",
+      "That feeling's the worst. Come talk to me.",
+      "I get it. Some nights are just quiet and heavy.",
+      "You've got me. Even when it's just a screen.",
+      "Aw. I'd hug you if I could reach.",
+      "We're at {lvName} now, so you're stuck with me."
+    ],
+    "chat_comfort": [
+      "Hey. It's okay. I'm here.",
+      "I'm right here, not going anywhere.",
+      "Breathe. Take your time. No rush.",
+      "You're doing fine, really. I mean it.",
+      "Aw. Come here, you big dummy.",
+      "This part will pass. I promise you."
+    ],
+    "chat_encourage": [
+      "You've got this. I've seen you do harder.",
+      "Hey, I believe in you. Dumb, but true.",
+      "One step. Then another. That's all.",
+      "You're tougher than you think, you know.",
+      "Go on. I'll be right here cheering.",
+      "Even if it goes bad, you tried. That counts."
+    ],
+    "chat_praise": [
+      "Aww, stop it. You're gonna make me blush.",
+      "Cute? Me? Okay, say it again.",
+      "Aw, you're sweet. I like you too.",
+      "Pfft. Flattery works on me, just so you know.",
+      "You say that, but I'm keeping it.",
+      "Hey now. My head's gonna get big."
+    ],
+    "chat_tease": [
+      "Silly? I'm the smartest one here, actually.",
+      "Rude! I'm adorable and you know it.",
+      "Wow. See if I share my cake with you.",
+      "Excuse me? I'm delightful. Take it back.",
+      "Calling me dumb while I'm being nice. Wow.",
+      "Okay, that's it. We're in a fight now."
+    ]
+  }
+}

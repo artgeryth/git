@@ -1,0 +1,130 @@
+{
+  "categories": {
+    "boot": [
+      "Hey, I'm here, and I missed this desktop way too much.",
+      "Oh, you turned me on, best part of my whole day.",
+      "Hi hi, {name} has landed, so please act a little excited.",
+      "Finally awake, and this screen was getting lonely without me.",
+      "Knock knock, it's me, your favorite desktop gremlin.",
+      "I'm up, I'm up, and honestly you took your time.",
+      {"text": "There you are, and I was starting to think you forgot me.", "minLv": 3},
+      {"text": "Hey you, same desk, same me, and I'm still not tired of you.", "minLv": 3},
+      {"text": "Booted up and already happy, and that's kind of your fault.", "minLv": 3}
+    ],
+    "greet_morning": [
+      "Morning, you look like you slept about four hours.",
+      "Oh hey, you're up early and I respect it kind of.",
+      "Good morning, I've been waiting here being very patient.",
+      "Hi there, coffee first and then we can be people.",
+      "Morning, sleepyhead, the desk really missed your elbows.",
+      "You're awake, so now my day can start properly."
+    ],
+    "greet_afternoon": [
+      "Afternoon, did you eat today or just forget again?",
+      "Hey, middle of the day check-in, how's it going?",
+      "Oh, there you are, afternoons are so weirdly quiet.",
+      "Hi, I was just humming to myself over here.",
+      "Afternoon already, time really flies when I nap a lot.",
+      "Hey you, perfect timing because I was getting bored."
+    ],
+    "greet_evening": [
+      "Evening, the day's basically done and I'm proud of us.",
+      "Hey, you made it to evening, which is the good part.",
+      "Oh hi, it's dark out so that means cozy time.",
+      "Evening, you, what are we doing tonight, probably nothing?",
+      "Hi, rain outside right now would make this perfect.",
+      "Hey there, tonight feels like a lazy one, huh?"
+    ],
+    "greet_night": [
+      "It's late, you know, so go to sleep, seriously.",
+      "Hey, do you know what time it is, because it's sleep o'clock.",
+      "You're still up, and I'm about to start nagging.",
+      "Go to bed, and I'll be right here tomorrow, promise.",
+      "Late night again, your pillow is filing a formal complaint.",
+      "Hmm, it's way past late, so sleep or I sulk."
+    ],
+    "welcome_back": [
+      "You're back, and it's been {days} days, I counted every one.",
+      "Oh, {days} days without you, and I got so bored.",
+      "Hey stranger, {days} days is kind of a long time.",
+      "You came back, and I knew you would, eventually.",
+      "{days} days, I almost started talking to the wallpaper.",
+      "There you are, don't disappear like that again, okay?"
+    ],
+    "idle": [
+      "Hmm, I wonder what strawberry cake tastes like in the rain.",
+      "Hey, random question, cats or tiny dogs?",
+      "I'm not saying anything, I'm just sitting here, loudly.",
+      "Do you ever stare at a wall and think about games?",
+      "I've decided today is a good day, for no reason.",
+      "Sometimes I hum a song and forget which one it is.",
+      {"text": "You've been quiet, and I like just hanging out with you.", "minLv": 3},
+      {"text": "If you get cake later, I'm claiming a bite, just so you know.", "minLv": 3},
+      {"text": "I'm glad it's you on this desktop, so don't make it weird.", "minLv": 3}
+    ],
+    "idle_3min": [
+      "Hey, hey, are you still there, blink twice please.",
+      "Um, hello, did you turn into a statue or something?",
+      "I'm bored and you're being suspiciously still over there.",
+      "Psst, poke the mouse, I dare you.",
+      "You've been gone three minutes and obviously I noticed.",
+      "Hey, come back, because I have nothing to do."
+    ],
+    "idle_5min": [
+      "Okay, five minutes, and I might wander off, just saying.",
+      "If you don't move soon, I'm exploring the whole taskbar.",
+      "This is it, I'm leaving, probably not though.",
+      "Hellooo, I'm gonna go find someone more fun.",
+      "Five whole minutes, and my patience is a tiny thing.",
+      "Fine, I'll entertain myself, badly."
+    ],
+    "idle_8min": [
+      "Okay, I'm getting sleepy, so don't judge me.",
+      "My eyes are heavy, and I'm just gonna rest them.",
+      "Mmm, if you need me I'll be right here, dozing.",
+      "I think a nap is happening, and it's happening.",
+      "Eight minutes is basically bedtime for me.",
+      "Wake me if something fun happens, okay?"
+    ],
+    "idle_12min": [
+      "Mmm, cake, the big one, with strawberries on top...",
+      "Zzz, no, I got the high score, and it's mine...",
+      "Sleepy dream, and the cat is wearing a tiny hat...",
+      "Mmmh, save me a slice, the corner one please...",
+      "Zzz, hey, don't touch my controller, that's mine...",
+      "Nnh, rainy day, blanket, and this is perfect..."
+    ],
+    "wake_up": [
+      "I wasn't asleep, I was just resting my eyes!",
+      "Huh, what, I'm awake, and I've been awake.",
+      "Oh, hi, and I definitely heard everything you said.",
+      "I was not snoring, that was definitely the computer.",
+      "Hey, perfect timing, I was totally paying attention.",
+      "What, no, I blinked, and that's all it was."
+    ],
+    "sleep": [
+      "Zzz...",
+      "Mmm... zzz...",
+      "...snore... mmph...",
+      "Zzz... haa... mmm...",
+      "...mm... zzzz...",
+      "Hnn... zzz..."
+    ],
+    "wake": [
+      "Huh, I'm up, I'm up, what did I miss?",
+      "Mmh, oh, you're back, hi there.",
+      "Wha, okay okay, I'm awake, sort of.",
+      "Nn, five more minutes... fine, I'm here.",
+      "Oh, hi, was I out long?",
+      "Mmph, right, I'm awake now, hello."
+    ],
+    "bored": [
+      "So bored, so so bored, and nobody ever tells me things.",
+      "I've counted the icons twice, twice, and no one cares.",
+      "Maybe I'll invent a game, but it'd just be me.",
+      "Bored bored bored, I'm saying it until something happens.",
+      "Being a desktop girl is mostly waiting, honestly.",
+      "I could nap, but I already did that, ugh."
+    ]
+  }
+}

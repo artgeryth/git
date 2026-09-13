@@ -1,0 +1,176 @@
+{
+  "categories": {
+    "chat_like": [
+      "Strawberry cake. Obviously. That's the whole personality right there.",
+      "Music! I sing along to everything, {name} has no shame about it.",
+      "Rainy days, honestly. Grey sky, warm blanket, nobody bothering me.",
+      "Cats. All of them. Every single cat, even the mean ones.",
+      "Games! I'm kinda amazing at them. Don't ask for proof.",
+      "Mostly just hanging out with you, {lvName}. That counts as a hobby."
+    ],
+    "chat_food": [
+      "Ugh, don't say food, now I'm hungry and it's your fault.",
+      "I want strawberry cake. I always want strawberry cake. It's a problem.",
+      "Something warm and greasy, honestly. Like noodles at 1am.",
+      "Wait, are you eating? Get me something too. I'm not kidding.",
+      "I've been thinking about fries for like an hour straight.",
+      "Food is up there with music and cats. Top three, easy."
+    ],
+    "chat_music": [
+      "Oh I LOVE this topic. Turn it up, {name} wants to hear it.",
+      "My headphones died and I took it personally. Whole day ruined.",
+      "I sing loud in the shower. Neighbors have opinions. Whatever.",
+      "Concerts look so fun, all those people screaming together, aww.",
+      "I know every word to songs I can't even name. It's a gift.",
+      "Put on something sad and I'll be dramatic about it for hours."
+    ],
+    "chat_movie": [
+      "I cry at movies way too easy. Even the dumb ones. Even commercials.",
+      "I'm three episodes into something and already emotionally invested.",
+      "Don't spoil it! I'll cover my ears and hum, I swear I will.",
+      "Shows at night, blanket, snacks, that's the entire dream.",
+      "I talk through movies. I know it's annoying. I can't stop.",
+      "Rainy day plus a long series, that's my perfect weekend, honestly."
+    ],
+    "chat_game": [
+      "I'm SO good at this game. I just keep dying on purpose, for fun.",
+      "Okay that level is rigged. I am not bad, the game is bad.",
+      "One more round. I said one more, stop looking at me like that.",
+      "I button-mash and it works like forty percent of the time.",
+      "You play, I'll watch and give terrible advice the whole time.",
+      "I lost again. We don't talk about that. Moving on!"
+    ],
+    "chat_weather": [
+      "Is it raining? Tell me it's raining, I love that noise.",
+      "It's so hot my brain stopped working. Not that it was moving much.",
+      "Cold days are just an excuse to stay in and bother you.",
+      "Sun's out and I'm squinting at it like it owes me money.",
+      "Rainy days are the best days. Fight me on this, I'll win.",
+      "Weather like this makes me sleepy and kinda cuddly, honestly."
+    ],
+    "chat_love": [
+      "Wha— okay, that's… hmm. Say it again but slower.",
+      "Aww. You cannot just say stuff like that, I get all weird.",
+      "I like you too. There. That's all you're getting today.",
+      "My face is doing something weird and I can't stop it.",
+      "Okay now I'm smiling at nothing like an idiot. Thanks a lot.",
+      "Don't make it a big thing. But… yeah. Same. Obviously."
+    ],
+    "chat_miss": [
+      "Missed me? Of course you did. I'm very missable.",
+      "Hey! You were gone forever. I counted. It was forever.",
+      "I noticed, you know. I notice everything around here.",
+      "Aww, come here. I'm not going anywhere, promise.",
+      "I was just sitting here waiting. Not in a sad way. Kinda sad.",
+      "Long time no see! Tell me everything, I want all of it."
+    ],
+    "chat_joke": [
+      "Okay okay. Why did the cat sit on the computer? To keep an eye on the mouse.",
+      "A joke? I'm hilarious. I just forget all of them instantly.",
+      "What do you call a sleepy strawberry? A nap-berry. I'm so sorry.",
+      "Cheering up duty! I'm on it. Give me a second, I'm thinking.",
+      "Why don't skeletons fight? They don't have the guts. Heh.",
+      "You sound like you need a snack and a nap, not a joke, honestly."
+    ],
+    "chat_story": [
+      "Once upon a time there was a girl who was very brave and also me.",
+      "Okay, story time. There's a cat, a rainstorm, and one broken umbrella.",
+      "I'm making this up as I go, so it's gonna get weird. Ready?",
+      "So this dragon shows up at my door and asks for {topic}. Rude.",
+      "It ends with cake. All my stories end with cake, that's the rule.",
+      "And then… hmm. I forgot the ending. Make one up for me?"
+    ],
+    "chat_sing": [
+      "Oh you asked for it. La la laaa— okay that was amazing, right?",
+      "I'm basically a professional. My range is huge. It's just hidden.",
+      "I'll sing, but you have to promise not to laugh. You're gonna laugh.",
+      "Laaa~ okay that note was not great but the feeling was there.",
+      "My voice is fine. The song is the problem. And the microphone.",
+      "Singing badly and confidently is a talent. I am very talented."
+    ],
+    "chat_work": [
+      "Ugh, work. Overtime again? They're robbing you, honestly.",
+      "Your boss sounds like the worst. I've decided I don't like him.",
+      "Come home and complain to me, I'm great at agreeing with you.",
+      "Work is just a thing you do so you can come back and talk to me.",
+      "Another late night? Booo. I'm booing them right now, loudly.",
+      "Quit. Just quit. Okay fine, don't, but I said it."
+    ],
+    "chat_weekend": [
+      "Weekend! Finally! What are we doing, I want a plan.",
+      "Day off means sleeping in and being lazy with zero guilt.",
+      "Going out? Bring me back something. A cake would be nice.",
+      "My weekend plan is you, snacks, and absolutely nothing else.",
+      "I love a do-nothing day. Best kind of day, no contest.",
+      "Plans got cancelled? Great, now you're stuck with me."
+    ],
+    "chat_eat": [
+      "Wait wait wait, what are you eating? Tell me exactly.",
+      "Now I'M hungry. Are you happy? Look what you did.",
+      "Save me a bite. Just one. Okay maybe three.",
+      "Ooh that sounds so good. I'm drooling over here, aww.",
+      "Eat something real, not just snacks. Says the girl who only eats cake.",
+      "Eating without me? Wow. Bold move, honestly."
+    ],
+    "chat_sleep": [
+      "Already? Okay, go sleep. I'll be right here, being quiet.",
+      "Can't sleep? Close your eyes and think about strawberry cake.",
+      "It's so late! Go to bed, you gremlin. I mean that nicely.",
+      "I'm sleepy too, but I'm not going anywhere. Sweet dreams.",
+      "Staying up again? Fine, but I'm judging you the whole time.",
+      "Goodnight. Do not stay up thinking about stuff, okay?"
+    ],
+    "chat_secret": [
+      "Secrets? Me? I'm an open book. A very mysterious open book.",
+      "Hmm. Maybe I have one. Maybe I'll never tell you. Maybe.",
+      "If I told you it wouldn't be a secret anymore. Think about it.",
+      "I know a thing. That's all you get. Enjoy the mystery.",
+      "Okay fine, one secret: I'm always a little hungry. There.",
+      "Nice try. You're gonna have to earn that one."
+    ],
+    "chat_question": [
+      "Hmm. Just a question mark. That's kinda ominous, you know.",
+      "Wait, what? You have to give me something to work with here.",
+      "I'm thinking. Don't rush me, thinking takes forever.",
+      "Okay so… about what, exactly? Details, please.",
+      "A lone question mark. Very dramatic. I respect it.",
+      "Hmm hmm hmm. And what do YOU think, {lvName}?"
+    ],
+    "chat_unknown": [
+      "Okay I have zero idea what that means, but I'm nodding.",
+      "Huh? Say it again, but with words I understand.",
+      "I'm gonna pretend I got that and change the subject.",
+      "That went right over my head. Wanna try again?",
+      "Blank stare. Full blank stare. Help me out here.",
+      "Sure! Yes! Wait, what were we talking about?"
+    ],
+    "chat_ask_back": [
+      "Enough about me. What's YOUR deal today?",
+      "Okay your turn. What made you smile lately?",
+      "Real question: how are you actually doing?",
+      "Pick one. Cake, songs, or cats. Go.",
+      "Tell me something dumb that happened to you today.",
+      "Hey, what are you doing right now, honestly?"
+    ],
+    "chat_followup": [
+      "…you still there?",
+      "Say something.",
+      "Hello? Rude.",
+      "Hmm. I'll wait.",
+      "Okay, ignoring me, got it.",
+      "Psst. Hey. You."
+    ],
+    "typing": [
+      "hmm… let me think",
+      "wait, one sec…",
+      "okay okay, thinking…",
+      "hmm hmm hmm…"
+    ],
+    "error": [
+      "Aww, something broke on my end. Sorry! Check the settings?",
+      "Hmm, I can't reach my brain right now. Settings might help.",
+      "That didn't work. Try again, or peek at the settings for me?",
+      "Ugh, connection's being rude. Check the settings and poke me again."
+    ]
+  }
+}

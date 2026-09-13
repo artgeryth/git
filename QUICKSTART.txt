@@ -1,0 +1,66 @@
+Yaya · Desktop Pet — Quick start
+===============================
+
+1. Unzip this folder anywhere (Desktop or D:\ is fine).
+   Please avoid C:\Program Files — she saves her memory next to the exe and that folder is read-only.
+
+2. Double-click  娅娅桌面宠物.exe  (her main program).
+
+3. She appears in the bottom-right corner of your desktop and stays on top of your windows.
+
+HOW TO PLAY
+-----------
+  single click      pat her head (hop + hearts + affection +1)
+  double click      open the menu   (right click works too)
+  click her 4+ fast she pretends to get annoyed
+  drag her          put her anywhere; she remembers the spot
+  move your cursor near her   she notices you
+  leave her alone   3 min: she tries to get your attention
+                     5 min: she wanders off, bored
+                     8 min: dozing off
+                    12 min: fast asleep (and she wakes the moment you touch the keyboard)
+  tray icon         let her rest / call her back / settings / quit
+
+CHATTING
+--------
+  Menu → "Chat with me" (or double-click → Chat with me).
+  Local library: fully offline, she answers from ~500 hand-written lines. Free, no account.
+  AI chat:       Settings → Chat mode → AI chat, paste an API key (DeepSeek by default; any
+                 OpenAI-compatible endpoint works) and press "Test connection".
+                 Without a key she just keeps using the local library.
+
+  Switch language anytime: Settings → Language → 中文 / English.
+
+HER FILES
+---------
+  data\state.json   her memory: name, affection, position, size, settings
+                    (an API key, if you added one, is encrypted with Windows DPAPI)
+  data\pet.log      diagnostics log, useful if something looks wrong
+
+  She never records what you type and never reads your files. Without AI mode she is fully offline.
+
+UNINSTALL
+---------
+  1. Tray icon → Quit
+  2. Delete this folder and the desktop shortcut
+  3. If you ticked "Start with Windows", also delete this registry value:
+     HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run  ->  YayaDesktopPet
+
+WINDOWS MIGHT WARN YOU
+----------------------
+  The exe is not code-signed. If you see "Windows protected your PC":
+  click "More info" → "Run anyway".
+  To avoid the prompt entirely: right-click the downloaded zip → Properties → tick "Unblock" → OK,
+  then extract.
+
+USING YOUR OWN CHARACTER
+------------------------
+  content\sprites\ holds her look. Put your own 3-view sheet in content\sheet\ and run:
+      tools\make-sprites.exe content\sheet\your-sheet.jpg content\sprites "59-376,392-791,809-1226"
+  (omit the last argument to auto-detect). If content\sprites\ is missing, she falls back to the
+  original placeholder mascot in content\placeholder\.
+
+LICENSE
+-------
+  Code, dialogue and docs: MIT (see LICENSE).
+  Character artwork: belongs to its original artist — see ATTRIBUTION.md.

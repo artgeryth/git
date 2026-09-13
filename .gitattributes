@@ -1,0 +1,18 @@
+# 换行符与二进制类型：让 Windows 上的 .bat 保持 CRLF（LF 的 .bat 在 cmd 里会解析出错，踩过）
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.txt text eol=crlf
+*.cs text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.exe binary
+*.zip binary
+*.ico -text

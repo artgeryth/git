@@ -1,0 +1,192 @@
+{
+  "categories": {
+    "click": [
+      "Hey, that tickles! Do it again, I dare you.",
+      "Oh, you poked me! I was hoping you would.",
+      "Careful, I might poke you back someday.",
+      "Hey! That is my personal space, you know.",
+      "Aww, you noticed me. Hi there, friend.",
+      {"text": "You always find me, even when I hide.", "minLv": 3},
+      {"text": "One more poke and I am telling everyone.", "minLv": 3}
+    ],
+    "click_many": [
+      "Whoa, slow down! I am not a button, you know.",
+      "Hmph! Keep poking and I will bite your finger.",
+      "Okay okay, I am awake! Stop it already!",
+      "You are going to wear me out with all that!",
+      "Hey! My patience is not unlimited, buddy."
+    ],
+    "notice_cursor": [
+      "Hey, your cursor is right next to me.",
+      "Ooh, are you coming over to say hi?",
+      "I can see that little arrow sneaking closer.",
+      "Hi there, mysterious floating pointer thing.",
+      "Come closer, I do not bite. Usually."
+    ],
+    "walk_start": [
+      "Okay, I am going exploring! Do not miss me too much.",
+      "Be right back, I want to see that corner.",
+      "Time to stretch my legs, see you in a bit.",
+      "Off I go! Try to keep up, slowpoke.",
+      "I am heading over there for no good reason."
+    ],
+    "walk_arrive": [
+      "Ahh, this spot is way better. I am staying.",
+      "Made it! This is my new favorite place.",
+      "Okay, this looks cozy. I will camp here.",
+      "Perfect spot. I could nap right here.",
+      "Here I am, right where I wanted to be."
+    ],
+    "feed": [
+      "Strawberry cake! You actually remembered my favorite!",
+      "Mmm, this is the best thing ever, thank you!",
+      "Aww, you are the sweetest. I love this stuff.",
+      "Okay, this is delicious. You get a gold star.",
+      "Cake! Yes! Today is officially a good day."
+    ],
+    "feed_full": [
+      "I already had three! I am going to explode.",
+      "No more, please, I am absolutely stuffed.",
+      "Aww, I want it, but my tummy says no.",
+      "Save it for later? I am so full right now.",
+      "Hmph, you are trying to fatten me up."
+    ],
+    "praise_pat": [
+      "Aww, that feels nice. Do it again?",
+      "Hey! Okay, that was actually pretty great.",
+      "Head pats! I will allow exactly one more.",
+      "You are being suspiciously nice today.",
+      "Mmm, I could stay here forever like this.",
+      {"text": "You always know when I need one of those.", "minLv": 3},
+      {"text": "Okay, you are officially my favorite person.", "minLv": 3}
+    ],
+    "level_up": [
+      "Hey! We are {lvName} now. That is pretty cool.",
+      "Look at that, {lvName}! We are getting somewhere.",
+      "We leveled up to {lvName}. I feel special.",
+      "So we are {lvName} now? I like the sound of that.",
+      "That took a while, but {lvName} was worth it."
+    ],
+    "topic": [
+      "Question: pineapple on pizza, yes or no?",
+      "I have been thinking about cake all day.",
+      "What show are you watching lately? I need ideas.",
+      "Do you like rain? I think it is cozy.",
+      "If you could eat one food forever, what is it?",
+      {"text": "Tell me something weird that happened to you today.", "minLv": 3},
+      {"text": "What song is stuck in your head right now?", "minLv": 3}
+    ],
+    "action_hop": [
+      "Boing! Bet you did not expect that.",
+      "Hop hop! I am basically a rabbit now.",
+      "Wheee! Okay, that was fun. Again?",
+      "Did you see that? I have skills.",
+      "I am practicing my jumping. How is it looking?"
+    ],
+    "action_spin": [
+      "Wheee! Everything is spinning, look at me go!",
+      "Ta-da! Did you like my little twirl?",
+      "Round and round and round. Okay, dizzy now.",
+      "I spin, therefore I am. Pretty deep, right?",
+      "One more spin! I am showing off today."
+    ],
+    "action_wave": [
+      "Hi! Yes, I am waving at you specifically.",
+      "Hey there! Over here, look at me!",
+      "Hello hello! I have been waiting for you.",
+      "Waving because I am happy to see you.",
+      "See my hand? That means hi, in case you forgot."
+    ],
+    "action_dance": [
+      "This song is too good, I have to dance.",
+      "Watch my moves! I have been practicing.",
+      "Come on, dance with me. Nobody is watching.",
+      "I cannot help it, the beat got me.",
+      "Dancing is basically my favorite kind of exercise."
+    ],
+    "action_stretch": [
+      "Big stretch! My back was getting stiff.",
+      "Ahh, that is the stuff. Feels so good.",
+      "Stretching time. Do not judge my form.",
+      "I sat too long, everything is stiff now.",
+      "Reaching for the ceiling! Almost there, almost."
+    ],
+    "action_lookback": [
+      "Fine, I am turning around. Do not stare.",
+      "Hmph, you are not getting my face right now.",
+      "I am ignoring you. This is me ignoring you.",
+      "Looking away because I am a little mad.",
+      "You can talk to my back for a while."
+    ],
+    "action_sit": [
+      "Okay, sitting down. My legs needed this.",
+      "I am resting now, wake me if something fun happens.",
+      "Just going to sit here and exist for a bit.",
+      "Ahh, sitting is highly underrated, honestly.",
+      "Do not disturb, I am having a sit."
+    ],
+    "pose_front": [
+      "Front view! Now you get the full picture.",
+      "Hey, look at me from this angle.",
+      "Okay, I am facing you. Happy now?",
+      "This is my best side, obviously.",
+      "Front and center, ready for attention."
+    ],
+    "pose_side": [
+      "Side view. Very mysterious of me, right?",
+      "I am showing you my profile now.",
+      "Hmph, I look good from here too.",
+      "Sideways is underrated, if you ask me.",
+      "Now you see me a little differently."
+    ],
+    "pose_back": [
+      "Back view! Guess you only get my silhouette.",
+      "I am facing away, so no funny business.",
+      "Okay, this is my mysterious angle.",
+      "You cannot see my face now, ha.",
+      "Turning around just to mess with you."
+    ],
+    "roam_on": [
+      "Alright, roaming mode on! I am going places.",
+      "I will wander around and cause trouble.",
+      "Freedom! Watch me explore your whole desktop.",
+      "Roaming on. Try not to lose track of me.",
+      "I am going to walk around and bother you later."
+    ],
+    "roam_off": [
+      "Roaming off. I will stay right here.",
+      "Fine, I will park myself and not move.",
+      "Okay, staying put. This is my spot now.",
+      "No wandering for me, I am a statue.",
+      "I will just sit here and wait for you."
+    ],
+    "hide": [
+      "Okay, taking a break. Do not look for me.",
+      "I am hiding now, so no peeking.",
+      "Going somewhere quiet. I will be back.",
+      "Break time! Even I need a minute.",
+      "Poof, gone. Miss me while I am away."
+    ],
+    "recall": [
+      "You called? I was having a great time.",
+      "Coming! You better have a good reason.",
+      "I am back. Did you miss me that much?",
+      "Hey, I am here. What is going on?",
+      "Fine, I am coming back. This better be good."
+    ],
+    "first_run": [
+      "Hey! I am {name}, and I live on your desktop now.",
+      "Hi! I am {name}. You can click me or drag me around.",
+      "Nice to meet you! I am {name}, your new desktop buddy.",
+      "Oh, hello! I am {name}. This desktop is ours now.",
+      "Hi there! I am {name}, and I am not leaving."
+    ],
+    "shortcut_made": [
+      "Hey, there is a shortcut now. Use it next time!",
+      "I made you a shortcut, so launching me is easier.",
+      "New shortcut on your desktop! Pretty handy, right?",
+      "Next time just double click that shortcut, okay?",
+      "See that little icon? That is how you find me."
+    ]
+  }
+}

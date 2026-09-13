@@ -1,0 +1,41 @@
+# 运行期数据：她的好感度、名字、位置、设置（含加密后的 API Key）——绝对不能提交
+data/
+!data/.gitkeep
+
+# 角色立绘（content/sprites）：一张来源不明的网传 AI 生成图 —— 发布版带着它（维护者的选择），
+# 说明写在 ATTRIBUTION.md：无法署名、不主张版权、不建议商用、收到异议立即移除。
+# 如果哪天你想彻底干净（比如换成自己画的），把下面三行的注释取消即可排除它，
+# 程序会自动改用 content/placeholder/ 里的原创占位形象，功能完全不受影响。
+# content/sprites/
+# content/sprites/*.png
+# content/sprites/*.jpg
+
+# 三视图原始设定图（素材源，仓库里通常不需要）
+content/sheet/
+
+# 编译产物（发布时附到 GitHub Releases，不进 Git）
+*.exe
+*.ico
+娅娅桌面宠物
+app.ico
+娅娅.ico
+
+# 开发/排障用的临时图片与日志
+data/selftest/
+*.log
+*.tmp
+
+# 打包产物（发布包放这儿也不会被提交，走 GitHub Releases 上传）
+dist/
+*.zip
+
+# 放在仓库文件夹里的「上传说明」（个人提醒，不属于仓库内容）
+上传说明.txt
+_上传说明.txt
+
+# 编辑器 / 系统
+.vs/
+.idea/
+*.user
+Thumbs.db
+desktop.ini
