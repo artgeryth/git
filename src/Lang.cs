@@ -82,6 +82,17 @@ static class Lang
         A("set.aiNoKey", "选了 AI 聊天，但 Key 还没填哦——先填上我再变聪明。", "You picked AI chat, but there's no API key yet — add one and I'll get smarter.");
         A("set.badKeyLine", "设置里还没填 API Key，我先用本地词库陪你聊——想让我变聪明就去设置里填上。", "No API key yet, so I'll keep you company with my local library — add one in Settings and I'll get smarter.");
 
+        /* ---------- AI 互动反馈 ---------- */
+        A("set.aiReactions",
+            "互动时也让她现场想一句（AI 模式，更鲜活，会多花点额度）",
+            "Improvise interaction reactions too (AI mode, livelier, uses more tokens)");
+        A("ai.reactionRule",
+            "这一次不是用户找你聊天，而是你刚刚经历了一件小事。请只回一句很短的反应（不超过 20 个字），不要问问题、不要解释、不要重复你以前说过的话。",
+            "This is NOT a chat turn — something just happened to you. Reply with ONE very short reaction only (max 12 words). Do not ask questions, do not explain, and do not repeat yourself.");
+        A("ai.reactionAsk",
+            "刚刚发生的事：{0}。你会怎么反应？",
+            "What just happened: {0} — what's your reaction?");
+
         /* ---------- 聊天窗 ---------- */
         A("chat.titleFmt", "{0} · 聊天", "{0} · Chat");
         A("chat.send", "发送", "Send");

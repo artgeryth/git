@@ -206,12 +206,14 @@ class PetWindow : LayeredWindow
     public void SayCat(string cat, string mood)
     {
         string line = App.lines.Pick(cat, App.Vars(), Level);
-        if (line == null && App.lines.Has(cat)) return;
         if (line != null)
         {
             LastCategory = cat;                 // 自检用：最近一次说了哪一类
             Say(line, mood);
         }
+        // AI 模式：本地台词先保证「点下去立刻有反应」，再异步让模型现场补一句。
+        // 具体哪些分类会走 AI、冷却多久，都在 AiReaction.cs 里。
+        if (App != null) App.AskAiReaction(cat, mood);
     }
 
     /// <summary>自检用：最近一次触发的台词分类</summary>

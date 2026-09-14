@@ -365,6 +365,23 @@ class App
         return Lang.T("chat.modeLocal");
     }
 
+    /// <summary>互动反馈是否也走 AI：设置里开着 + 当前是 AI 模式 + 填了 Key</summary>
+    public bool AiReactionsOn
+    {
+        get
+        {
+            if (!store.GetBool("aiReactions", true)) return false;
+            if (store.GetString("chatMode", "local") != "ai") return false;
+            return !string.IsNullOrEmpty(store.GetSecret("apiKey"));
+        }
+    }
+
+    /// <summary>互动（摸头/投喂/动作/挂机…）的 AI 反馈入口，实现见 AiReaction.cs</summary>
+    public void AskAiReaction(string cat, string mood)
+    {
+        AiReaction.Ask(this, cat, mood);
+    }
+
     /* ================= AI ================= */
 
     public void AskAi(List<ChatWindow.Turn> history, string userText, Action<string> ok, Action<string> fail)
@@ -649,6 +666,27 @@ class App
                           (chat.Transcript.Count > 12 ? "（已经超出窗口高度 → 有滚动条）" : ""));
             foreach (ChatWindow.Turn t in chat.Transcript)
                 sb.AppendLine("  " + (t.Me ? "我" : PetName) + "：" + t.Text);
+        }
+        catch (Exception ex)
+        {
+            sb.AppendLine("  【异常】" + ex.Message);
+        }
+        sb.AppendLine();
+
+        // 4b. AI 互动反馈覆盖检查（不联网：只核对分类映射与台词库是否对得上）
+        sb.AppendLine("-- AI 互动反馈（接 API 后，这些互动不再只说固定台词）--");
+        try
+        {
+            var covered = AiReaction.CoveredCategories();
+            var missing = new List<string>();
+            foreach (string c in covered) if (!lines.Has(c)) missing.Add(c);
+            sb.AppendLine("  会走 AI 的互动分类 " + covered.Count + " 个");
+            if (missing.Count > 0)
+                sb.AppendLine("  [错误] 这些分类在台词库里不存在（分类名拼错了？）：" + string.Join(", ", missing.ToArray()));
+            else
+                sb.AppendLine("  全部 " + covered.Count + " 个分类在台词库里都存在  ✓");
+            sb.AppendLine("  冷却 " + (AiReaction.CooldownMs / 1000) + " 秒；本地台词仍然先说，AI 那句是异步追加");
+            sb.AppendLine("  " + string.Join("  ", covered.ToArray()));
         }
         catch (Exception ex)
         {
