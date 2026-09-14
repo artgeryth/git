@@ -292,6 +292,16 @@ class ChatWindow : Form
 
         AddTurn(true, text);
 
+        // 生日指令（「我的生日是 3 月 15 日」）：两种模式都认
+        string feastReply;
+        if (Feast.TryCommand(App2, text, out feastReply))
+        {
+            AddTurn(false, feastReply);
+            App2.pet.Say(feastReply, "happy");
+            ReflowTranscript();
+            return;
+        }
+
         // 记忆指令（「记住：…」/「你记得什么」/「清空记忆」）：
         // 两种模式都认，直接回答，不走词库也不调 API
         string memReply;

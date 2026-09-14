@@ -380,6 +380,76 @@
       "Next time just double click that shortcut, okay?",
       "See that little icon? That is how you find me."
     ],
+    "feast_newyear": [
+      "Happy New Year! Come hang out with me this year too, okay?",
+      "It's New Year's Day! Going out, or staying in doing nothing?",
+      "(She tied a tiny bow and wishes you a happy new year.)",
+      "A whole new year. I'm wishing you less overtime and more sleep.",
+      "New year, new me — actually no, still lazy. Sorry."
+    ],
+    "feast_newyeareve": [
+      "Last day of the year. Stay up and count down with me?",
+      "Almost next year. Anything you wanted to do and didn't?",
+      "(She keeps an eye on the clock, waiting for midnight.)",
+      "Happy New Year's Eve! Keep patting my head next year too, okay?",
+      "You made it through the year. Take the rest of today off."
+    ],
+    "feast_valentine": [
+      "It's Valentine's Day... do you have someone to spend it with?",
+      "No? That's fine, you've got me. (She holds out a chocolate.)",
+      "(She quietly slides a piece of candy onto your desktop.)",
+      "Happy Valentine's! It's a chocolate holiday, but I'd rather have cake.",
+      "If nobody gave you anything today, here's something nice: you're pretty great."
+    ],
+    "feast_children": [
+      "Happy Children's Day! Grown-ups get to celebrate too, right?",
+      "Today you're allowed to be lazy. It's a holiday.",
+      "(She hops a little higher than usual.)",
+      "Happy Children's Day! Want to hear a really silly joke?",
+      "Holiday rules say you have to eat something sweet. Go get it."
+    ],
+    "feast_halloween": [
+      "Trick or treat! ...Do you even have candy?",
+      "It's Halloween. I'm pretending to be a tiny ghost.",
+      "(She drapes an invisible sheet over herself and floats around.)",
+      "Happy Halloween. Don't let anything else scare you — I'm here.",
+      "Want to do something spooky tonight? I scare easily, so go easy."
+    ],
+    "feast_christmas": [
+      "Merry Christmas! Did you get any presents?",
+      "I was going to put something in your stocking... but I'm tiny.",
+      "(She's wearing a red hat. It's crooked.)",
+      "It's freezing out. Stay inside and keep me company.",
+      "Merry Christmas! Make a wish — I'll remember it."
+    ],
+    "feast_national": [
+      "Happy National Day! It's a holiday, it's a holiday!",
+      "Where are you headed? Or are you just staying in bed?",
+      "(She hoists a tiny flag, very serious about it.)",
+      "Have fun on your days off. Don't get stuck in traffic too long.",
+      "You're off work. Don't think about it. I won't bring it up either."
+    ],
+    "feast_spring": [
+      "Happy Spring Festival! Happy new year!",
+      "Eat something good today. I'd like a bite too.",
+      "(She changed into something red and bows to wish you a good year.)",
+      "It's New Year! Skip the red envelope — just give me the cake.",
+      "Another year of us being friends, okay?"
+    ],
+    "feast_midautumn": [
+      "Happy Mid-Autumn! The moon is so round tonight.",
+      "Did you have mooncakes? I like the yolk ones.",
+      "(She points out the window — she can't actually see out there.)",
+      "It's a family day. If you're not home, I'll keep you company.",
+      "Happy Mid-Autumn! Look up at the moon for me."
+    ],
+    "feast_birthday": [
+      "Happy birthday!! Today you're the main character.",
+      "Did you make a wish? No wish, no cake.",
+      "(She holds up a tiny cake with number candles on it.)",
+      "Another year older — but to me you're forever a kid.",
+      "Happy birthday! Take good care of yourself this year too."
+    ],
     "chat_greet": [
       "Hey, you're back! I was starting to get bored.",
       "Oh hey! I was just thinking about you.",

@@ -207,6 +207,13 @@ class App
                     Log("立绘缺失，已回退到原创占位形象");
                     pet.Say(Lang.T("fallbackNotice"), "shy");
                 }
+                // 节日彩蛋：说完开场白再补一句（她会排队说出来）
+                try
+                {
+                    string feast = Feast.Key(this);
+                    if (!string.IsNullOrEmpty(feast)) { Log("今天是节日：" + feast); pet.SayCat(feast, "happy"); }
+                }
+                catch (Exception ex) { Log("节日彩蛋出错：" + ex.Message); }
                 SaveNow();
             }
             catch (Exception ex) { Log("欢迎语出错：" + ex.Message); }
@@ -670,6 +677,52 @@ class App
                           (chat.Transcript.Count > 12 ? "（已经超出窗口高度 → 有滚动条）" : ""));
             foreach (ChatWindow.Turn t in chat.Transcript)
                 sb.AppendLine("  " + (t.Me ? "我" : PetName) + "：" + t.Text);
+        }
+        catch (Exception ex)
+        {
+            sb.AppendLine("  【异常】" + ex.Message);
+        }
+        sb.AppendLine();
+
+        // 4c. 节日彩蛋（不联网，用固定日期逐项验证）
+        sb.AppendLine("-- 节日彩蛋 --");
+        try
+        {
+            string savedBirthday = store.GetString("birthday", "");
+            store.Set("birthday", "");       // 避免用户生日干扰这一轮验证
+            var probe = new string[][]
+            {
+                new string[] { "2026-02-17", "feast_spring"     },
+                new string[] { "2026-09-25", "feast_midautumn"  },
+                new string[] { "2026-01-01", "feast_newyear"    },
+                new string[] { "2026-12-31", "feast_newyeareve" },
+                new string[] { "2026-02-14", "feast_valentine"  },
+                new string[] { "2026-06-01", "feast_children"   },
+                new string[] { "2026-10-01", "feast_national"   },
+                new string[] { "2026-10-31", "feast_halloween"  },
+                new string[] { "2026-12-25", "feast_christmas"  },
+                new string[] { "2026-05-20", ""                 },
+            };
+            int ok = 0, bad = 0;
+            foreach (string[] row in probe)
+            {
+                string[] p = row[0].Split('-');
+                DateTime d = new DateTime(int.Parse(p[0]), int.Parse(p[1]), int.Parse(p[2]));
+                string k = Feast.KeyFor(this, d);
+                bool pass = (row[1].Length == 0) ? (k == null) : (k == row[1]);
+                if (pass && k != null && !lines.Has(k)) pass = false;   // 台词库里得有这个分类
+                if (pass) ok++; else bad++;
+                sb.AppendLine("  " + row[0] + " -> " + (k == null ? "(普通日子)" : k) + (pass ? "  ✓" : "  ✗ 期望 " + row[1]));
+            }
+            sb.AppendLine("  " + ok + " 项正确 / " + bad + " 项异常");
+
+            // 生日：设一次、查一次、清掉
+            store.Set("birthday", "03-15");
+            bool hit = Feast.KeyFor(this, new DateTime(2026, 3, 15)) == "feast_birthday";
+            store.Set("birthday", savedBirthday);
+            sb.AppendLine("  生日识别：" + (hit ? "✓" : "✗") + "（当前存的生日：" +
+                          (savedBirthday.Length > 0 ? savedBirthday : "未设置") + "）");
+            sb.AppendLine("  春节/中秋是农历，用对照表（当前表到 2030 年）；生日由用户自己告诉她");
         }
         catch (Exception ex)
         {

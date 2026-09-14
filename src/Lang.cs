@@ -108,6 +108,15 @@ static class Lang
         A("mem.listHead", "我记得关于你的 {0} 件事：", "Here's what I remember about you ({0}):");
         A("mem.cleared", "好啦，我都忘掉了，重新开始～", "Okay, I've forgotten everything. Fresh start!");
 
+        /* ---------- 节日彩蛋 ---------- */
+        A("feast.birthdaySaved",
+            "记住啦，你的生日是 {0} 月 {1} 日，到那天我会记得的～",
+            "Got it — your birthday is {0}/{1}. I'll remember when the day comes!");
+        A("feast.birthdayCleared", "好啦，我把你的生日忘掉了。", "Okay, I've forgotten your birthday.");
+        A("feast.birthdayBad",
+            "这个日期我读不出来……换种说法？比如「我的生日是 3 月 15 日」",
+            "I couldn't read that date. Try \"my birthday is 3/15\".");
+
         /* ---------- 聊天窗 ---------- */
         A("chat.titleFmt", "{0} · 聊天", "{0} · Chat");
         A("chat.send", "发送", "Send");
