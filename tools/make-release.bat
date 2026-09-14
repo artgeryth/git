@@ -16,7 +16,7 @@ rem    程序会自动改用 content\placeholder 的原创占位形象。
 rem ============================================================
 
 set "NAME=娅娅桌面宠物"
-set "VER=1.0"
+set "VER=1.1"
 set "STAGE=dist\_build"
 set "RUN=dist\YayaDesktopPet"
 set "WINZIP=dist\YayaDesktopPet-v%VER%-win.zip"

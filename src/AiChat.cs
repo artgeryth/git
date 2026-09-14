@@ -62,7 +62,7 @@ class AiChat
                 req.Method = "POST";
                 req.ContentType = "application/json";
                 req.Accept = "application/json";
-                req.UserAgent = "YayaDesktopPet/1.0";
+                req.UserAgent = "YayaDesktopPet/1.1";
                 req.Timeout = 45000;
                 req.ReadWriteTimeout = 45000;
                 req.Proxy = null;

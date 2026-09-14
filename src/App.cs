@@ -144,7 +144,7 @@ class App
         using (Graphics g = Graphics.FromHwnd(IntPtr.Zero)) S = g.DpiX / 96f;
         if (S < 1f) S = 1f;
 
-        Log("启动 · 版本 1.0 · DPI 缩放 " + S.ToString("0.##") +
+        Log("启动 · 版本 1.1 · DPI 缩放 " + S.ToString("0.##") +
             (lines.LoadError.Length > 0 ? " · 台词库有问题：" + lines.LoadError : " · 台词库 OK"));
         Sprite.Probe = delegate (string s) { Log("SpriteProbe " + s); };
 

@@ -4,7 +4,7 @@ title 打包 娅娅桌面宠物（分享给别人用）
 cd /d "%~dp0.."
 
 set "NAME=娅娅桌面宠物"
-set "VER=1.0"
+set "VER=1.1"
 set "STAGE=dist\%NAME%"
 set "SRCSTAGE=dist\_src\%NAME%-v%VER%-源码"
 

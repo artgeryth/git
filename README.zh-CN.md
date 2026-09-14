@@ -6,7 +6,7 @@
 
 ### 👉 [**点这里下载（Windows）**](https://github.com/artgeryth/git/releases/latest) · [所有版本](https://github.com/artgeryth/git/releases)
 
-下载 `YayaDesktopPet-v1.0-win.zip` → 解压到任意位置（**别放 `C:\Program Files`**）→ 双击 `娅娅桌面宠物.exe`。
+下载 **`-win.zip`** 那个文件 → 解压到任意位置（**别放 `C:\Program Files`**）→ 双击 `娅娅桌面宠物.exe`。
 Windows 7 及以上 · 免安装 · 不需要装任何运行库 · 本地聊天模式全程不联网。
 
 ---
@@ -227,7 +227,7 @@ node tools\build-lines.mjs      :: 把 _meta / _keywords / _env1 / _env2 / _chat
 
 **程序图标 / 版本信息**：`tools\build.bat` 会用 `content\sprites\pet-avatar.png` 自动生成
 `app.ico`（7 个尺寸：16/24/32/48/64/128/256），一份编进 exe，另一份复制成 **`娅娅.ico`** 放在 exe 旁边；
-右键 exe 属性能看到「娅娅桌面宠物 1.0.0.0」。
+右键 exe 属性能看到「娅娅桌面宠物 1.1.0.0」。
 
 > **桌面快捷方式指向的是 `娅娅.ico` 这个独立文件，而不是 exe 内嵌图标**——这不是随便定的：
 > Windows 外壳会按「图标路径」缓存图标，只换 exe 里的图标时它经常继续显示缓存的旧样子
