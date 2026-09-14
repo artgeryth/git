@@ -736,6 +736,35 @@ class App
             string sn = Game.Start(false);
             bool m2 = Game.StateForTest() == "num" && !string.IsNullOrEmpty(sn);
             sb.AppendLine("  菜单入口直接开局：猜拳=" + (m1 ? "✓" : "✗") + "  猜数字=" + (m2 ? "✓" : "✗"));
+
+            // 猜拳胜率：她完全随机的话，双方各 1/3 胜、1/3 负、1/3 平。
+            // 这里用真实对局跑 300 盘（我固定出石头）把分布量出来，别靠读代码下结论。
+            int win = 0, lose = 0, draw = 0;
+            int[] herMove = new int[3];
+            const int Rounds = 3000;
+            for (int i = 0; i < Rounds; i++)
+            {
+                Game.ResetForTest();
+                string g1; Game.TryHandle(this, "猜拳", out g1);
+                string g2; Game.TryHandle(this, "石头", out g2);
+                if (g2 == null) continue;
+                for (int k = 0; k < 3; k++)
+                    if (g2.IndexOf(Lang.T("game.move" + k), StringComparison.Ordinal) >= 0) { herMove[k]++; break; }
+                if (g2.IndexOf(Lang.T("game.rpsWin"), StringComparison.Ordinal) >= 0) win++;
+                else if (g2.IndexOf(Lang.T("game.rpsLose"), StringComparison.Ordinal) >= 0) lose++;
+                else draw++;
+            }
+            Game.ResetForTest();
+            int exp = Rounds / 3;
+            sb.AppendLine("  猜拳 " + Rounds + " 局（我固定出石头）：胜 " + win + " / 负 " + lose + " / 平 " + draw +
+                          "   （公平应为各约 " + exp + "）");
+            sb.AppendLine("  她出拳分布：石头 " + herMove[0] + " / 剪刀 " + herMove[1] + " / 布 " + herMove[2] +
+                          "   （均匀应为各约 " + exp + "）");
+            // 容差放到 ±25%（约 3σ 以外），只抓"真的不公平"，不会被随机波动误判
+            int tol = exp / 4;
+            bool fair = Math.Abs(win - exp) < tol && Math.Abs(lose - exp) < tol && Math.Abs(draw - exp) < tol &&
+                        Math.Abs(herMove[0] - exp) < tol && Math.Abs(herMove[1] - exp) < tol && Math.Abs(herMove[2] - exp) < tol;
+            sb.AppendLine("  公平性：" + (fair ? "✓ 三种结果各约 1/3，她三种拳也均匀" : "✗ 分布异常（有人把随机改坏了？）"));
             sb.AppendLine("  小游戏纯本地，不联网、不调 API");
         }
         catch (Exception ex)
