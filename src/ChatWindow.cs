@@ -168,7 +168,7 @@ class ChatWindow : Form
             {
                 Size sz = TextRenderer.MeasureText(t.Text, f, new Size((int)(w * 0.72f), 10000),
                     TextFormatFlags.WordBreak | TextFormatFlags.NoPadding | TextFormatFlags.TextBoxControl);
-                total += sz.Height + (int)(18 * S);
+                total += TurnStride(sz.Height);
             }
         }
         if (thinking) total += (int)(34 * S);
@@ -182,6 +182,14 @@ class ChatWindow : Form
     {
         return new Font("Microsoft YaHei UI", 9.5f, FontStyle.Regular, GraphicsUnit.Point);
     }
+
+    /* 气泡几何 —— ReflowTranscript（估算滚动总高）和 DrawTranscript（实际绘制）
+       必须共用这两个函数，否则「估算高度 < 实际绘制高度」，滚动条以为到底了、
+       其实下面还有内容，最后一条对话就会被切掉。
+       历史 bug：两边分别写了 18*S 和 14*S+8*S，每条差 4*S；
+       对话越长偏得越多（12 条就少 72px，最后一条直接没了半截）。 */
+    int BubbleH(int textH) { return textH + (int)(14 * S); }              // 气泡高：上下各 7*S 内边距
+    int TurnStride(int textH) { return BubbleH(textH) + (int)(8 * S); }   // 再加与下一条之间的间距
 
     void DrawTranscript(Graphics g)
     {
@@ -210,7 +218,7 @@ class ChatWindow : Form
                 int maxW = (int)(w * 0.72f);
                 Size sz = TextRenderer.MeasureText(t.Text, f, new Size(maxW, 10000), flags);
                 int bw = sz.Width + (int)(18 * S);
-                int bh = sz.Height + (int)(14 * S);
+                int bh = BubbleH(sz.Height);
                 int bx = t.Me ? (w - bw) : pad;
                 var rect = new RectangleF(bx, y, bw, bh);
                 if (rect.Bottom >= 0 && rect.Top <= clientH)      // 只画看得见的，省点力气
@@ -222,7 +230,7 @@ class ChatWindow : Form
                         new Rectangle((int)rect.X + (int)(9 * S), (int)rect.Y + (int)(7 * S), sz.Width, sz.Height),
                         Color.FromArgb(255, 55, 45, 55), flags);
                 }
-                y += bh + (int)(8 * S);
+                y += TurnStride(sz.Height);
             }
 
             if (thinking)
