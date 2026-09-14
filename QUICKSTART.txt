@@ -24,16 +24,42 @@ HOW TO PLAY
 CHATTING
 --------
   Menu → "Chat with me" (or double-click → Chat with me).
-  Local library: fully offline, she answers from ~500 hand-written lines. Free, no account.
+  Local library: fully offline, she answers from ~540 hand-written lines. Free, no account.
   AI chat:       Settings → Chat mode → AI chat, paste an API key (DeepSeek by default; any
                  OpenAI-compatible endpoint works) and press "Test connection".
                  Without a key she just keeps using the local library.
 
+  In AI mode, interactions improvise too: patting her, feeding her cake and watching her do a
+  trick get a freshly written line instead of the same fixed one. The local line still plays
+  first, so it never feels laggy. Can be switched off in Settings.
+
   Switch language anytime: Settings → Language → 中文 / English.
+
+THINGS YOU CAN TYPE AT HER
+--------------------------
+  rock paper scissors   play a round (she plays fair, and trash-talks a little)
+  guess a number        she picks a number from 1 to 100 and you guess it
+  stop                  end the game you're in
+  remember: <fact>      she keeps it        (e.g.  remember: I'm studying for exams)
+  what do you remember  she reads the list back
+  forget everything     wipe it
+  my birthday is 3/15   she'll remember the date and say something special that day
+
+SHE LOOKS AFTER YOU
+-------------------
+  50 minutes straight at the computer  →  she tells you to get up and move.
+  Still awake between 1am and 5am      →  she tells you to go to bed.
+  Timing uses only Windows' "last input time" — nothing you type is recorded.
+  Turn it off in Settings ("Break & late-night reminders").
+
+  She also knows what day it is: New Year, New Year's Eve, Valentine's, Children's Day,
+  National Day, Halloween, Christmas, Spring Festival and Mid-Autumn — plus your birthday.
+  (The lunar dates table runs to 2030.)
 
 HER FILES
 ---------
-  data\state.json   her memory: name, affection, position, size, settings
+  data\state.json   her memory: name, affection, position, size, settings,
+                    the things you asked her to remember, and your birthday
                     (an API key, if you added one, is encrypted with Windows DPAPI)
   data\pet.log      diagnostics log, useful if something looks wrong
 

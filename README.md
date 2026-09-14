@@ -30,16 +30,30 @@ Windows 7 or newer · no installer · no runtime to install.
 | **Idle stages** | 3 min: she tries to get your attention. 5 min: she wanders off, bored. 8 min: dozing off. 12 min: fast asleep. The moment you touch the keyboard she jolts awake. |
 | **Time-aware greetings** | Different lines for morning / afternoon / evening / late night, and she says she missed you if you haven't opened the PC in days. |
 | **Affection levels** | Just met → Getting closer → Friend → Good friend → Bestie. Levelling up unlocks lines only close friends get to hear. |
+| **She remembers you** | Tell her `remember: I'm studying for exams` and she keeps it; in AI mode she picks things up on her own. Ask her **what do you remember** to see the list, or **forget everything** to wipe it. |
+| **Games** | Type **rock paper scissors** or **guess a number** in the chat and play. She plays fair, and trash-talks a little. |
+| **Looks after you** | 50 minutes straight at the computer and she tells you to get up and move. Still awake between 1am and 5am and she tells you to go to bed. (Timing comes only from Windows' "last input time" — nothing is logged.) |
+| **Knows what day it is** | New Year, New Year's Eve, Valentine's, Children's Day, Halloween, Christmas, National Day, plus Spring Festival and Mid-Autumn — and **your birthday**, if you tell her (say `my birthday is 3/15`). |
+| **Improvises when you interact** | In AI mode she doesn't just repeat the same lines when you pat her, feed her cake or watch her do a trick — she makes something up on the spot. Local lines still play instantly, so she never feels laggy. |
 | **Tray icon** | Let her rest / call her back / settings / quit. |
 
 ## 💬 Two chat modes (pick in Settings)
 
 1. **Local library (default)** — 100% offline, no account, no cost. She matches keywords in what you type and
-   answers from **492 hand-written lines across 85 categories** (English and Chinese libraries both included).
+   answers from **542 hand-written lines across 95 categories** (English and Chinese libraries both included).
    Sometimes she follows up with a second line.
 2. **AI chat** — plug in an API key and she becomes a real LLM conversation, remembering the last 12 turns.
    Defaults to DeepSeek; **any OpenAI-compatible endpoint works** (OpenAI, Ollama, Moonshot, Qwen, …).
    There is a **Test connection** button. No key? She just keeps using the local library and tells you why.
+
+In AI mode you also get two extras, both of which can be turned off in Settings:
+
+- **Improvised interaction reactions** — patting her, feeding her, tricks and idle stages get a freshly
+  written line instead of the same fixed one. She still says the local line first, so it never feels laggy.
+- **Memory** — she picks up stable facts about you from the conversation (`@@记：…@@`), and puts them into
+  her system prompt next time. Nothing extra is sent to the API for this.
+
+Both of these need the API key; without one she simply stays on the local library.
 
 **Language**: Settings → Language → `中文 / English`. The whole UI, her lines and her AI persona follow it.
 
