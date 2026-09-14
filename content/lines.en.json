@@ -450,6 +450,20 @@
       "Another year older — but to me you're forever a kid.",
       "Happy birthday! Take good care of yourself this year too."
     ],
+    "care_sit": [
+      "Hey, how long have you been sitting there? Go walk around.",
+      "(She pokes the edge of your screen.) Time to get up.",
+      "You've been at it a while. Go get some water — I'll wait.",
+      "Your shoulders must be stiff. Stretch with me?",
+      "It's been a long stretch. Give your eyes a break too."
+    ],
+    "care_late": [
+      "It's this late and you're still up? Good luck tomorrow.",
+      "(She yawns.) I'm sleepy. You should sleep too.",
+      "Stop staying up. I'll get mad.",
+      "You can still get decent sleep. Go.",
+      "It's late. All this screen light isn't good for you."
+    ],
     "chat_greet": [
       "Hey, you're back! I was starting to get bored.",
       "Oh hey! I was just thinking about you.",

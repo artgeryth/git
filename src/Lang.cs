@@ -86,6 +86,9 @@ static class Lang
         A("set.aiReactions",
             "互动时也让她现场想一句（AI 模式，更鲜活，会多花点额度）",
             "Improvise interaction reactions too (AI mode, livelier, uses more tokens)");
+        A("set.care",
+            "久坐 / 熬夜提醒（连续用电脑 50 分钟，或凌晨还醒着）",
+            "Break & late-night reminders (50 min straight, or still up past 1am)");
         A("ai.reactionRule",
             "这一次不是用户找你聊天，而是你刚刚经历了一件小事。请只回一句很短的反应（不超过 20 个字），不要问问题、不要解释、不要重复你以前说过的话。",
             "This is NOT a chat turn — something just happened to you. Reply with ONE very short reaction only (max 12 words). Do not ask questions, do not explain, and do not repeat yourself.");

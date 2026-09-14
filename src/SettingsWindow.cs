@@ -19,7 +19,7 @@ class SettingsWindow : Form
     ComboBox langBox;
     TrackBar sizeSlider;
     Label sizeLabel;
-    CheckBox roamBox, autoStartBox, reactionBox;
+    CheckBox roamBox, autoStartBox, reactionBox, careBox;
     Label testLabel, infoLabel;
     double originalScale = 1.0;
 
@@ -37,7 +37,7 @@ class SettingsWindow : Form
         Text = Lang.F("set.titleFmt", App2.PetName);
         BackColor = Color.FromArgb(252, 249, 251);
         AutoScaleMode = AutoScaleMode.None;
-        Size = new Size((int)(470 * S), (int)(620 * S));
+        Size = new Size((int)(470 * S), (int)(648 * S));
         SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint, true);
         BuildUi();
 
@@ -203,22 +203,31 @@ class SettingsWindow : Form
         reactionBox.Checked = App2.store.GetBool("aiReactions", true);
         Controls.Add(reactionBox);
 
-        Btn(Lang.T("set.shortcut"), 20, 552, 170, 28, delegate
+        /* 关心提醒（久坐 / 熬夜） */
+        careBox = new CheckBox();
+        careBox.Text = Lang.T("set.care");
+        careBox.Font = new Font("Microsoft YaHei UI", 9f, FontStyle.Regular, GraphicsUnit.Point);
+        careBox.Location = new Point((int)(20 * S), (int)(548 * S));
+        careBox.AutoSize = true;
+        careBox.Checked = App2.store.GetBool("careSit", true) || App2.store.GetBool("careLate", true);
+        Controls.Add(careBox);
+
+        Btn(Lang.T("set.shortcut"), 20, 576, 170, 28, delegate
         {
             bool ok = App2.CreateShortcut();
             testLabel.Text = ok ? Lang.T("set.shortcutOk") : Lang.T("set.shortcutFail");
         });
 
         /* 底部按钮 */
-        Btn(Lang.T("set.save"), 250, 578, 90, 32, delegate { Save(); });
-        Btn(Lang.T("set.cancel"), 350, 578, 100, 32, delegate { CancelSize(); Hide(); });
+        Btn(Lang.T("set.save"), 250, 602, 90, 32, delegate { Save(); });
+        Btn(Lang.T("set.cancel"), 350, 602, 100, 32, delegate { CancelSize(); Hide(); });
 
         /* 信息 */
         infoLabel = new Label();
         infoLabel.Font = new Font("Microsoft YaHei UI", 8f, FontStyle.Regular, GraphicsUnit.Point);
         infoLabel.ForeColor = Color.FromArgb(150, 150, 160);
         infoLabel.AutoSize = false;
-        infoLabel.Location = new Point((int)(205 * S), (int)(552 * S));
+        infoLabel.Location = new Point((int)(205 * S), (int)(576 * S));
         infoLabel.Size = new Size((int)(245 * S), (int)(30 * S));
         infoLabel.Text = Lang.F("set.infoFmt", App2.pet.Intimacy, App2.lines.LevelName(App2.pet.Intimacy));
         Controls.Add(infoLabel);
@@ -297,6 +306,8 @@ class SettingsWindow : Form
         App2.store.Set("personaExtra", (extraBox.Text ?? "").Trim());
         App2.store.Set("roam", roamBox.Checked);
         App2.store.Set("aiReactions", reactionBox.Checked);
+        App2.store.Set("careSit", careBox.Checked);
+        App2.store.Set("careLate", careBox.Checked);
         App2.store.Set("sizeScale", sizeSlider.Value / 100.0);
         App2.store.Save();
 

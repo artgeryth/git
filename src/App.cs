@@ -389,6 +389,12 @@ class App
         AiReaction.Ask(this, cat, mood);
     }
 
+    /// <summary>关心提醒（久坐 / 熬夜）的心跳，由宠物窗口的动画定时器驱动，实现见 Care.cs</summary>
+    public void CareTick()
+    {
+        Care.Tick(this);
+    }
+
     /* ================= AI ================= */
 
     public void AskAi(List<ChatWindow.Turn> history, string userText, Action<string> ok, Action<string> fail)
@@ -677,6 +683,23 @@ class App
                           (chat.Transcript.Count > 12 ? "（已经超出窗口高度 → 有滚动条）" : ""));
             foreach (ChatWindow.Turn t in chat.Transcript)
                 sb.AppendLine("  " + (t.Me ? "我" : PetName) + "：" + t.Text);
+        }
+        catch (Exception ex)
+        {
+            sb.AppendLine("  【异常】" + ex.Message);
+        }
+        sb.AppendLine();
+
+        // 4d. 关心提醒（久坐 / 熬夜）
+        sb.AppendLine("-- 关心提醒（久坐 / 熬夜）--");
+        try
+        {
+            sb.AppendLine("  阈值：连续用电脑 " + Care.SitMinutes + " 分钟提醒久坐；离开满 " +
+                          Care.RestMinutes + " 分钟算休息过（重新计时，允许再提醒）");
+            sb.AppendLine("  熬夜时段：" + Care.LateFromHour + ":00 – " + Care.LateToHour + ":00，一晚只念一次");
+            bool a = lines.Has("care_sit"), b = lines.Has("care_late");
+            sb.AppendLine("  台词分类 care_sit=" + (a ? "有 ✓" : "缺 ✗") + "   care_late=" + (b ? "有 ✓" : "缺 ✗"));
+            sb.AppendLine("  判断依据只有系统的「最后输入时间」，不记录按键内容、不装钩子");
         }
         catch (Exception ex)
         {

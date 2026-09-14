@@ -444,6 +444,9 @@ class PetWindow : LayeredWindow
         if (stage != idleStage) OnIdleStageChanged(idleStage, stage);
         idleStage = stage;
 
+        // 久坐 / 熬夜提醒
+        App.CareTick();
+
         // 她自己的嘀咕（你不理她、但你在用电脑的时候）
         if (stage == 0 && !Busy && !App.ChatVisible && !walking && !MenuVisible && now >= nextChatterAt)
         {
