@@ -291,6 +291,18 @@ class ChatWindow : Form
         input.Clear();
 
         AddTurn(true, text);
+
+        // 记忆指令（「记住：…」/「你记得什么」/「清空记忆」）：
+        // 两种模式都认，直接回答，不走词库也不调 API
+        string memReply;
+        if (Memory.TryCommand(App2, text, out memReply))
+        {
+            AddTurn(false, memReply);
+            App2.pet.Say(memReply, "normal");
+            ReflowTranscript();
+            return;
+        }
+
         thinking = true;
         ReflowTranscript();
         anim.Start();

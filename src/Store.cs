@@ -91,6 +91,14 @@ class Store
 
     public bool Has(string key) { return data.ContainsKey(key); }
 
+    /// <summary>拿原始对象（不做类型转换）：给需要自己解析数组结构的地方用</summary>
+    public object Raw(string key)
+    {
+        object v;
+        if (data.TryGetValue(key, out v)) return v;
+        return null;
+    }
+
     public void Set(string key, object value) { data[key] = value; }
 
     public void Remove(string key) { if (data.ContainsKey(key)) data.Remove(key); }

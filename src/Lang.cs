@@ -93,6 +93,21 @@ static class Lang
             "刚刚发生的事：{0}。你会怎么反应？",
             "What just happened: {0} — what's your reaction?");
 
+        /* ---------- 记忆 ---------- */
+        A("mem.learnRule",
+            "\n如果你从用户这句话里得知了他一条【稳定的】偏好或事实（喜欢/讨厌什么、正在做什么、重要的人或日子…），就在回答的最后单独加一行：\n@@记：<一句话事实>@@\n一行最多一条，没有就不加。这一行永远不会显示给用户，只用来让我记住他。",
+            "\nIf you learn a STABLE preference or fact about the user from this message (likes/dislikes, what they're working on, important people or dates...), add one separate line at the very end of your reply:\n@@记：<one short fact>@@\nAt most one line, and skip it if there's nothing. This line is never shown to the user — it only helps you remember them.");
+        A("mem.needFact",
+            "你想让我记住什么呀？说「记住：……」我就记下来。",
+            "What should I remember? Say \"remember: ...\" and I'll keep it.");
+        A("mem.saved", "记住啦：{0}", "Got it, I'll remember: {0}");
+        A("mem.already", "这个我已经记住啦～", "I already remember that one!");
+        A("mem.empty",
+            "我还没记住什么呢。你可以说「记住：我不吃香菜」这样告诉我。",
+            "I don't remember anything yet. Try saying \"remember: I hate cilantro\".");
+        A("mem.listHead", "我记得关于你的 {0} 件事：", "Here's what I remember about you ({0}):");
+        A("mem.cleared", "好啦，我都忘掉了，重新开始～", "Okay, I've forgotten everything. Fresh start!");
+
         /* ---------- 聊天窗 ---------- */
         A("chat.titleFmt", "{0} · 聊天", "{0} · Chat");
         A("chat.send", "发送", "Send");

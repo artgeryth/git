@@ -394,7 +394,8 @@ class App
         foreach (ChatWindow.Turn t in history)
             msgs.Add(new KeyValuePair<string, string>(t.Me ? "user" : "assistant", t.Text));
 
-        string sys = lines.SystemPrompt(pet.PetName, lines.LevelName(pet.Intimacy), store.GetString("personaExtra", ""), pet.Intimacy);
+        string sys = lines.SystemPrompt(pet.PetName, lines.LevelName(pet.Intimacy), store.GetString("personaExtra", ""), pet.Intimacy)
+                     + Memory.PromptBlock(this);
         Log("AI 请求 · " + store.GetString("apiBase", AiChat.DefaultBase) + " · " + msgs.Count + " 条上下文");
 
         AiChat.Ask(store.GetString("apiBase", AiChat.DefaultBase), store.GetSecret("apiKey"),
@@ -402,8 +403,11 @@ class App
             delegate (string reply)
             {
                 pet.Busy = false;
-                Log("AI 回复 " + reply.Length + " 字");
-                if (ok != null) ok(reply);
+                // 回答末尾可能夹着 @@记：…@@（她这次学到了一条关于你的事），摘出来存下、并从回答里抹掉
+                string clean = Memory.ExtractTag(this, reply);
+                if (string.IsNullOrEmpty(clean)) clean = Lang.T("chat.noReply");
+                Log("AI 回复 " + clean.Length + " 字");
+                if (ok != null) ok(clean);
             },
             delegate (string err)
             {
@@ -666,6 +670,43 @@ class App
                           (chat.Transcript.Count > 12 ? "（已经超出窗口高度 → 有滚动条）" : ""));
             foreach (ChatWindow.Turn t in chat.Transcript)
                 sb.AppendLine("  " + (t.Me ? "我" : PetName) + "：" + t.Text);
+        }
+        catch (Exception ex)
+        {
+            sb.AppendLine("  【异常】" + ex.Message);
+        }
+        sb.AppendLine();
+
+        // 4a. 记忆系统（不联网）。注意：先备份真实记忆，测完还原——自检不该毁掉用户的数据
+        sb.AppendLine("-- 记忆系统 --");
+        try
+        {
+            var backup = Memory.All(this);
+            int before = backup.Count;
+
+            bool w1 = Memory.Remember(this, "自检临时记忆：草莓蛋糕");
+            bool w2 = Memory.Remember(this, "自检临时记忆：草莓蛋糕");     // 第二次应判重
+            sb.AppendLine("  写入=" + (w1 ? "成功" : "失败 ✗") + "；重复写入判重=" + (w2 ? "没判出来 ✗" : "正确 ✓"));
+
+            string stripped = Memory.ExtractTag(this, "好啊我知道啦@@记：自检临时记忆：怕黑@@");
+            bool tagOk = stripped == "好啊我知道啦" && Memory.All(this).Count == before + 2;
+            sb.AppendLine("  从回答里摘出记忆标记 → 正文=\"" + stripped + "\"  " + (tagOk ? "✓" : "✗"));
+
+            string r1;
+            bool c1 = Memory.TryCommand(this, "记住：自检临时记忆：不吃香菜", out r1);
+            string r2;
+            bool c2 = Memory.TryCommand(this, "你记得什么", out r2);
+            string r3;
+            bool c3 = Memory.TryCommand(this, "清空记忆", out r3);
+            sb.AppendLine("  认指令：「记住：…」=" + (c1 ? "✓" : "✗") +
+                          "  「你记得什么」=" + (c2 ? "✓" : "✗") +
+                          "  「清空记忆」=" + (c3 ? "✓" : "✗"));
+            sb.AppendLine("  她会念出来 → " + (r2 ?? "").Replace("\r", "").Replace("\n", " / "));
+            sb.AppendLine("  清空后剩 " + Memory.All(this).Count + " 条 " + (Memory.All(this).Count == 0 ? "✓" : "✗"));
+
+            // 还原用户原本的记忆
+            foreach (string s in backup) Memory.Remember(this, s);
+            sb.AppendLine("  已还原原有记忆 " + Memory.All(this).Count + " 条（自检不破坏用户数据）");
         }
         catch (Exception ex)
         {
