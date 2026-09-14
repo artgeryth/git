@@ -727,6 +727,15 @@ class App
             Game.ResetForTest();
             bool pass = !Game.TryHandle(this, "今天天气不错", out r);
             sb.AppendLine("  普通聊天不受影响（原样交回词库/AI）：" + (pass ? "✓" : "✗"));
+
+            // 菜单里的「陪我猜拳 / 陪我猜数字」走的是 Game.Start，不经过文字匹配
+            Game.ResetForTest();
+            string sr = Game.Start(true);
+            bool m1 = Game.StateForTest() == "rps" && !string.IsNullOrEmpty(sr);
+            Game.ResetForTest();
+            string sn = Game.Start(false);
+            bool m2 = Game.StateForTest() == "num" && !string.IsNullOrEmpty(sn);
+            sb.AppendLine("  菜单入口直接开局：猜拳=" + (m1 ? "✓" : "✗") + "  猜数字=" + (m2 ? "✓" : "✗"));
             sb.AppendLine("  小游戏纯本地，不联网、不调 API");
         }
         catch (Exception ex)
@@ -1057,7 +1066,7 @@ class App
             Pump(500);
             MenuWindow m = pet.MenuForTest;
             if (m != null && m.DumpFrame(Path.Combine(outDir, "15-menu.png")))
-                sb.AppendLine("  菜单（10 项）→ 15-menu.png");
+                sb.AppendLine("  菜单（" + m.ItemCount + " 项）→ 15-menu.png");
             else sb.AppendLine("  菜单帧输出失败");
             pet.HideMenu();
         }

@@ -17,6 +17,9 @@ class MenuWindow : LayeredWindow
 
     public event Action<string> ItemChosen;
 
+    /// <summary>自检用：当前列出来的菜单项数量（别在自检里写死数字，加了菜单就会过时）</summary>
+    public int ItemCount { get { return items.Count; } }
+
     App App2;
     List<Item> items = new List<Item>();
     int hoverIndex = -1;

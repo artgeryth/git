@@ -38,6 +38,8 @@ static class Lang
         A("menu.roamOn", "自动走动：开", "Auto roam: on");
         A("menu.roamOff", "自动走动：关", "Auto roam: off");
         A("menu.poseFmt", "换个姿势：{0}", "Pose: {0}");
+        A("menu.playRps", "陪我猜拳", "Rock-paper-scissors");
+        A("menu.playNum", "陪我猜数字", "Guess a number");
         A("menu.settings", "设置", "Settings");
         A("menu.hide", "让我歇会儿", "Take a break");
         A("pose.front", "正面", "front");

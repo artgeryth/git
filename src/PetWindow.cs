@@ -902,6 +902,8 @@ class PetWindow : LayeredWindow
         items.Add(new MenuWindow.Item("feed", Lang.T("menu.feed")));
         items.Add(new MenuWindow.Item("chat", Lang.T("menu.chat")));
         items.Add(new MenuWindow.Item("topic", Lang.T("menu.topic")));
+        items.Add(new MenuWindow.Item("playRps", Lang.T("menu.playRps")));
+        items.Add(new MenuWindow.Item("playNum", Lang.T("menu.playNum")));
         items.Add(new MenuWindow.Item("action", Lang.T("menu.action")));
         items.Add(new MenuWindow.Item("walk", Lang.T("menu.walk")));
         items.Add(new MenuWindow.Item("roam", RoamEnabled ? Lang.T("menu.roamOn") : Lang.T("menu.roamOff")));
@@ -928,6 +930,15 @@ class PetWindow : LayeredWindow
         if (menu != null && menu.Visible) menu.Hide();
     }
 
+    /// <summary>菜单「陪我猜拳 / 陪我猜数字」：打开聊天窗并直接开局</summary>
+    void StartGame(bool rps)
+    {
+        App.OpenChat();
+        string reply = Game.Start(rps);
+        if (App.chat != null) App.chat.NotePetSaid(reply);
+        Say(reply, "happy");
+    }
+
     void HandleMenu(string id)
     {
         switch (id)
@@ -936,6 +947,8 @@ class PetWindow : LayeredWindow
             case "feed": Feed(); break;
             case "chat": App.OpenChat(); break;
             case "topic": SayCat("topic"); break;
+            case "playRps": StartGame(true); break;
+            case "playNum": StartGame(false); break;
             case "action": RandomAction(); break;
             case "walk": WalkSomewhere(false); break;
             case "roam":

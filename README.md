@@ -31,7 +31,7 @@ Windows 7 or newer · no installer · no runtime to install.
 | **Time-aware greetings** | Different lines for morning / afternoon / evening / late night, and she says she missed you if you haven't opened the PC in days. |
 | **Affection levels** | Just met → Getting closer → Friend → Good friend → Bestie. Levelling up unlocks lines only close friends get to hear. |
 | **She remembers you** | Tell her `remember: I'm studying for exams` and she keeps it; in AI mode she picks things up on her own. Ask her **what do you remember** to see the list, or **forget everything** to wipe it. |
-| **Games** | Type **rock paper scissors** or **guess a number** in the chat and play. She plays fair, and trash-talks a little. |
+| **Games** | Right-click her → **Rock-paper-scissors** or **Guess a number**, or just type it in the chat. She plays fair, and trash-talks a little. |
 | **Looks after you** | 50 minutes straight at the computer and she tells you to get up and move. Still awake between 1am and 5am and she tells you to go to bed. (Timing comes only from Windows' "last input time" — nothing is logged.) |
 | **Knows what day it is** | New Year, New Year's Eve, Valentine's, Children's Day, Halloween, Christmas, National Day, plus Spring Festival and Mid-Autumn — and **your birthday**, if you tell her (say `my birthday is 3/15`). |
 | **Improvises when you interact** | In AI mode she doesn't just repeat the same lines when you pat her, feed her cake or watch her do a trick — she makes something up on the spot. Local lines still play instantly, so she never feels laggy. |

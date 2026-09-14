@@ -75,6 +75,20 @@ static class Game
         return false;
     }
 
+    /// <summary>菜单入口用：不经过文字匹配，直接开一局，返回开场白</summary>
+    public static string Start(bool rps)
+    {
+        if (rps)
+        {
+            kind = "rps";
+            return Lang.T("game.rpsStart");
+        }
+        kind = "num";
+        secret = rng.Next(1, 101);
+        tries = 0;
+        return Lang.T("game.numStart");
+    }
+
     /* ---------------- 猜拳 ---------------- */
 
     static bool Rps(string t, out string reply)
