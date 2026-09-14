@@ -71,7 +71,15 @@ class App
         {
             if (args[i] == "--dump" && i + 1 < args.Length) dumpPath = args[i + 1];
             if (args[i] == "--dump-after" && i + 1 < args.Length) dumpAfter = int.Parse(args[i + 1]);
-            if (args[i] == "--selftest" && i + 1 < args.Length) selfTestDir = args[i + 1];
+            if (args[i] == "--selftest" && i + 1 < args.Length)
+            {
+                selfTestDir = args[i + 1];
+                // 自检绝不能碰用户桌面的快捷方式：把落点改到自检输出目录里。
+                // 以前 headless 会真的在桌面建/改快捷方式 —— 跑一次自检就把用户的
+                // 快捷方式指到了自检所在的临时目录，临时目录一删，快捷方式就废了。
+                try { Environment.SetEnvironmentVariable("YAYA_SHORTCUT_DIR", Path.Combine(args[i + 1], "shortcut-test")); }
+                catch { }
+            }
         }
 
         bool created;
@@ -502,13 +510,48 @@ class App
         return Path.Combine(dir, "娅娅桌面宠物.lnk");
     }
 
+    /// <summary>读出现有 .lnk 指向的目标；读不到返回空串</summary>
+    string ExistingShortcutTarget(string link)
+    {
+        try
+        {
+            Type t = Type.GetTypeFromProgID("WScript.Shell");
+            if (t == null) return "";
+            object sh = Activator.CreateInstance(t);
+            object sc = t.InvokeMember("CreateShortcut", BindingFlags.InvokeMethod, null, sh, new object[] { link });
+            object v = sc.GetType().InvokeMember("TargetPath", BindingFlags.GetProperty, null, sc, null);
+            return v == null ? "" : v.ToString();
+        }
+        catch { return ""; }
+    }
+
     /// <summary>不存在且允许创建就新建；已经存在就重写一遍（刷新图标与目标路径）</summary>
     public bool EnsureShortcut(bool createIfMissing)
     {
         try
         {
-            bool exists = File.Exists(ShortcutPath());
+            string link = ShortcutPath();
+            bool exists = File.Exists(link);
             if (!exists && !createIfMissing) return false;
+
+            // 已存在、且指向的是「另一份还在的程序」时，不要抢。
+            // 否则你本来装好一份，又从 zip 解压一份到下载目录里试一下，
+            // 桌面快捷方式就被改指向下载目录；回头把下载目录删掉，快捷方式就废了。
+            // （如果它指向的位置已经不存在了，那就重新指过来 —— 这正好覆盖
+            //   「把整个文件夹挪到别处」的情况。）
+            if (exists)
+            {
+                string cur = ExistingShortcutTarget(link);
+                string me = Application.ExecutablePath;
+                if (!string.IsNullOrEmpty(cur) &&
+                    !string.Equals(cur, me, StringComparison.OrdinalIgnoreCase) &&
+                    File.Exists(cur))
+                {
+                    Log("桌面快捷方式指向另一份程序（那份还在），保持不动：" + cur);
+                    return true;
+                }
+            }
+
             bool ok = CreateShortcut();
             if (ok) Log(exists ? "已刷新桌面快捷方式（图标/目标路径）" : "已创建桌面快捷方式");
             return ok;
