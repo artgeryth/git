@@ -447,8 +447,8 @@ class PetWindow : LayeredWindow
         // 久坐 / 熬夜提醒
         App.CareTick();
 
-        // 她自己的嘀咕（你不理她、但你在用电脑的时候）
-        if (stage == 0 && !Busy && !App.ChatVisible && !walking && !MenuVisible && now >= nextChatterAt)
+        // 她自己的嘀咕（你不理她、但你在用电脑的时候）——自检时也跳过，理由同上
+        if (stage == 0 && !Busy && !App.headless && !App.ChatVisible && !walking && !MenuVisible && now >= nextChatterAt)
         {
             SayCat(rng.NextDouble() < 0.25 ? "bored" : "idle");
             nextChatterAt = now.AddSeconds(100 + rng.Next(160));
@@ -461,8 +461,8 @@ class PetWindow : LayeredWindow
             nextRoamAt = now.AddSeconds(15 + rng.Next(16));
         }
 
-        // 光标靠近
-        if (stage == 0 && !Busy && (now - lastNotice).TotalSeconds > 90)
+        // 光标靠近（自检时跳过：那时鼠标停哪儿全看你的手，会让自检结果飘）
+        if (stage == 0 && !Busy && !App.headless && (now - lastNotice).TotalSeconds > 90)
         {
             Point c = Cursor.Position;
             float cx = PetX + PetPixelW / 2f, cy = PetY + PetPixelH / 2f;
