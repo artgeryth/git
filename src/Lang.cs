@@ -123,7 +123,26 @@ static class Lang
         /* ---------- 聊天窗 ---------- */
         A("chat.titleFmt", "{0} · 聊天", "{0} · Chat");
         A("chat.send", "发送", "Send");
-        A("chat.empty", "跟我说点什么吧，随便聊～", "Say something — anything goes!");
+        A("chat.empty",
+            "跟我说点什么吧，随便聊～\n也可以说「猜拳」或者「猜数字」，我陪你玩",
+            "Say something — anything goes!\nTry \"rock paper scissors\" or \"guess a number\" and we can play.");
+
+        /* ---------- 小游戏 ---------- */
+        A("game.rpsStart", "来！石头剪刀布——你先出，出什么都行", "Alright! Rock, paper, scissors — you go first.");
+        A("game.rpsWhat", "出石头、剪刀还是布呀？", "Rock, paper, or scissors?");
+        A("game.move0", "石头", "rock");
+        A("game.move1", "剪刀", "scissors");
+        A("game.move2", "布", "paper");
+        A("game.rpsBoth", "我出{0}——{1}", "I played {0} — {1}");
+        A("game.rpsWin", "你赢了……再来一局！", "You win... best of three!");
+        A("game.rpsLose", "我赢啦！今天手气真好", "I win! Lucky day.");
+        A("game.rpsDraw", "平局，再来一次？", "A tie. Again?");
+        A("game.numStart", "我想好了一个 1 到 100 的数字——猜猜看", "I picked a number from 1 to 100 — guess it.");
+        A("game.numLow", "小啦，再往大猜", "Too low — go higher.");
+        A("game.numHigh", "大啦，往小猜", "Too high — go lower.");
+        A("game.numWin", "猜对啦！你用了 {0} 次", "You got it! Took you {0} guesses.");
+        A("game.numBad", "给我一个 1 到 100 的数字嘛", "Give me a number between 1 and 100.");
+        A("game.quit", "好吧，不玩了。想玩随时叫我", "Okay, we'll stop. Call me whenever you want to play.");
         A("chat.thinkingFmt", "{0} 正在想{1}", "{0} is thinking{1}");
         A("chat.modeLocal", "本地词库（离线）", "Local library (offline)");
         A("chat.modeAiFmt", "AI 对话 · {0}", "AI chat · {0}");

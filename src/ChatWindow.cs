@@ -292,6 +292,17 @@ class ChatWindow : Form
 
         AddTurn(true, text);
 
+        // 小游戏（猜拳 / 猜数字）：放在最前面 —— 玩的时候「50」「石头」这类
+        // 短输入要先给游戏，不能落到词库或 AI 去
+        string gameReply;
+        if (Game.TryHandle(App2, text, out gameReply))
+        {
+            AddTurn(false, gameReply);
+            App2.pet.Say(gameReply, "happy");
+            ReflowTranscript();
+            return;
+        }
+
         // 生日指令（「我的生日是 3 月 15 日」）：两种模式都认
         string feastReply;
         if (Feast.TryCommand(App2, text, out feastReply))

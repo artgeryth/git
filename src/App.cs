@@ -690,6 +690,51 @@ class App
         }
         sb.AppendLine();
 
+        // 4e. 小游戏（不联网）
+        sb.AppendLine("-- 小游戏（猜拳 / 猜数字）--");
+        try
+        {
+            string r = null;
+            Game.ResetForTest();
+            bool s1 = Game.TryHandle(this, "猜拳", out r) && Game.StateForTest() == "rps";
+            sb.AppendLine("  「猜拳」开局：" + (s1 ? "✓" : "✗") + "  → " + (r ?? ""));
+            bool s2 = Game.TryHandle(this, "石头", out r) && !string.IsNullOrEmpty(r);
+            sb.AppendLine("  出「石头」：" + (s2 ? "✓" : "✗") + "  → " + (r ?? ""));
+
+            Game.ResetForTest();
+            bool s3 = Game.TryHandle(this, "猜数字", out r) && Game.StateForTest() == "num";
+            sb.AppendLine("  「猜数字」开局：" + (s3 ? "✓" : "✗") + "  → " + (r ?? ""));
+
+            // 二分法一定能猜中 1..100；猜中时她会把对局结束（状态回 idle）
+            int lo = 1, hi = 100, used = 0;
+            bool won = false;
+            string rr = null;
+            while (lo <= hi && used < 8)
+            {
+                int g = (lo + hi) / 2;
+                used++;
+                Game.TryHandle(this, g.ToString(), out rr);
+                if (Game.StateForTest() == "idle") { won = true; break; }
+                if (rr == Lang.T("game.numLow")) lo = g + 1; else hi = g - 1;
+            }
+            sb.AppendLine("  真的玩一局（二分法猜 1..100）：" + (won ? "✓ 用了 " + used + " 次" : "✗ 8 次没猜中"));
+
+            Game.ResetForTest();
+            Game.TryHandle(this, "猜数字", out r);
+            bool q = Game.TryHandle(this, "不玩了", out r) && Game.StateForTest() == "idle";
+            sb.AppendLine("  「不玩了」结束对局：" + (q ? "✓" : "✗"));
+
+            Game.ResetForTest();
+            bool pass = !Game.TryHandle(this, "今天天气不错", out r);
+            sb.AppendLine("  普通聊天不受影响（原样交回词库/AI）：" + (pass ? "✓" : "✗"));
+            sb.AppendLine("  小游戏纯本地，不联网、不调 API");
+        }
+        catch (Exception ex)
+        {
+            sb.AppendLine("  【异常】" + ex.Message);
+        }
+        sb.AppendLine();
+
         // 4d. 关心提醒（久坐 / 熬夜）
         sb.AppendLine("-- 关心提醒（久坐 / 熬夜）--");
         try
