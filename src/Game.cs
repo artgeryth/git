@@ -18,6 +18,11 @@ static class Game
     static int secret = 0;
     static int tries = 0;
 
+    /// <summary>自检用：上一局的归属 —— "iwin" 她赢 / "ilose" 你赢 / "draw" 平</summary>
+    public static string LastOutcome = "";
+    /// <summary>自检用：上一局她是不是耍赖了</summary>
+    public static bool LastWasCheat = false;
+
     public static bool Active { get { return kind.Length > 0; } }
 
     public static string Kind { get { return kind; } }
@@ -69,7 +74,7 @@ static class Game
         }
 
         /* 对局中 */
-        if (kind == "rps") return Rps(t, out reply);
+        if (kind == "rps") return Rps(app, t, out reply);
         if (kind == "num") return Num(app, t, out reply);
 
         return false;
@@ -91,7 +96,10 @@ static class Game
 
     /* ---------------- 猜拳 ---------------- */
 
-    static bool Rps(string t, out string reply)
+    /// <summary>她耍赖的概率：小概率偷偷换成能赢你的那一手，然后嘴硬不承认</summary>
+    public const double CheatChance = 0.08;
+
+    static bool Rps(App app, string t, out string reply)
     {
         reply = null;
         int mine = -1;
@@ -102,14 +110,54 @@ static class Game
         if (mine < 0) { reply = Lang.T("game.rpsWhat"); return true; }
 
         int hers = rng.Next(3);
+        bool cheated = rng.NextDouble() < CheatChance;
+        if (cheated) hers = (mine + 2) % 3;         // 换成刚好赢你的那一手
+
+        int diff = (mine - hers + 3) % 3;           // 0=平  1=她赢  2=你赢
         string mv = Lang.T("game.move" + hers);
         string result;
-        if (mine == hers) result = Lang.T("game.rpsDraw");
-        else if ((mine - hers + 3) % 3 == 2) result = Lang.T("game.rpsWin");    // 石头>剪刀>布>石头
-        else result = Lang.T("game.rpsLose");
+        if (diff == 0) result = PickLine(app, "game_rps_draw", Lang.T("game.rpsDraw"));
+        else if (diff == 2) result = PickLine(app, "game_rps_ilose", Lang.T("game.rpsWin"));
+        else result = PickLine(app, cheated ? "game_rps_cheat" : "game_rps_iwin", Lang.T("game.rpsLose"));
 
-        reply = Lang.F("game.rpsBoth", mv, result);
+        // 记分：存在 state.json 里，跨次启动也记得，她会对这个比分有执念
+        int me = 0, you = 0, dr = 0;
+        if (app != null)
+        {
+            me = app.store.GetInt("rpsMe", 0);
+            you = app.store.GetInt("rpsYou", 0);
+            dr = app.store.GetInt("rpsDraw", 0);
+        }
+        if (diff == 0) dr++; else if (diff == 2) you++; else me++;
+        if (app != null)
+        {
+            app.store.Set("rpsMe", me);
+            app.store.Set("rpsYou", you);
+            app.store.Set("rpsDraw", dr);
+            app.SaveSoon();
+        }
+
+        LastOutcome = diff == 0 ? "draw" : (diff == 2 ? "ilose" : "iwin");
+        LastWasCheat = cheated;
+
+        reply = Lang.F("game.rpsBoth", mv, result) + "  " + Lang.F("game.rpsScore", me, you);
+        if (cheated && app != null) app.Log("猜拳耍赖了一次（当前 我" + me + " : 你" + you + "）");
         return true;
+    }
+
+    /// <summary>优先从台词库取（用户可编辑），取不到就用代码里的兜底文案</summary>
+    static string PickLine(App app, string cat, string fallback)
+    {
+        try
+        {
+            if (app != null && app.lines != null && app.pet != null && app.lines.Has(cat))
+            {
+                string s = app.lines.Pick(cat, app.Vars(), app.pet.Level);
+                if (!string.IsNullOrEmpty(s)) return s;
+            }
+        }
+        catch { }
+        return fallback;
     }
 
     /* ---------------- 猜数字 ---------------- */

@@ -145,6 +145,8 @@ static class Lang
         A("game.numWin", "猜对啦！你用了 {0} 次", "You got it! Took you {0} guesses.");
         A("game.numBad", "给我一个 1 到 100 的数字嘛", "Give me a number between 1 and 100.");
         A("game.quit", "好吧，不玩了。想玩随时叫我", "Okay, we'll stop. Call me whenever you want to play.");
+        A("game.rpsScore", "（比分 我 {0} : 你 {1}）", "(Score: me {0}, you {1})");
+        A("game.rpsCheat", "（她飞快地换了一下手势）反正我赢了", "(She swaps her hand really fast.) Anyway, I win.");
         A("chat.thinkingFmt", "{0} 正在想{1}", "{0} is thinking{1}");
         A("chat.modeLocal", "本地词库（离线）", "Local library (offline)");
         A("chat.modeAiFmt", "AI 对话 · {0}", "AI chat · {0}");

@@ -38,6 +38,7 @@ CHATTING
 THINGS YOU CAN TYPE AT HER
 --------------------------
   rock paper scissors   play a round — or pick it from her menu (right-click her)
+                        she keeps score, gloats, makes excuses, and cheats ~8% of the time
   guess a number        she picks a number from 1 to 100 and you guess it
   stop                  end the game you're in
   remember: <fact>      she keeps it        (e.g.  remember: I'm studying for exams)

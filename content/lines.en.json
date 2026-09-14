@@ -464,6 +464,32 @@
       "You can still get decent sleep. Go.",
       "It's late. All this screen light isn't good for you."
     ],
+    "game_rps_iwin": [
+      "I win! Lucky day.",
+      "Ha! I knew you'd play that.",
+      "(She spins around, smug.) Again, again.",
+      "Winner~ Want me to go easy on you?",
+      "See? I'm not so easy to beat."
+    ],
+    "game_rps_ilose": [
+      "You win... best of three!",
+      "No no, that doesn't count, my hand slipped.",
+      "(She stomps a little.) Rematch.",
+      "Hmph. I let you have that one.",
+      "That window wasn't shut properly. The wind put me off."
+    ],
+    "game_rps_draw": [
+      "A tie. Again?",
+      "Same move? Okay, one more.",
+      "(She blinks at your matching hand.)",
+      "Ties don't count. Go again."
+    ],
+    "game_rps_cheat": [
+      "(She swaps her hand really fast.) Anyway, I win.",
+      "I win! ...You didn't see anything, right?",
+      "(She hides her hand behind her back.) I definitely played that. Definitely.",
+      "I won! And no, you can't prove anything."
+    ],
     "chat_greet": [
       "Hey, you're back! I was starting to get bored.",
       "Oh hey! I was just thinking about you.",

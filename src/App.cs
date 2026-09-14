@@ -737,9 +737,11 @@ class App
             bool m2 = Game.StateForTest() == "num" && !string.IsNullOrEmpty(sn);
             sb.AppendLine("  菜单入口直接开局：猜拳=" + (m1 ? "✓" : "✗") + "  猜数字=" + (m2 ? "✓" : "✗"));
 
-            // 猜拳胜率：她完全随机的话，双方各 1/3 胜、1/3 负、1/3 平。
-            // 这里用真实对局跑 300 盘（我固定出石头）把分布量出来，别靠读代码下结论。
-            int win = 0, lose = 0, draw = 0;
+            // 猜拳分布：她出拳均匀、但有 CheatChance 的概率偷换成能赢你的那一手。
+            // 用真实对局跑 3000 盘量出来，别靠读代码下结论。
+            // 注意：先备份真实战绩，测完还原 —— 自检不该污染用户的比分。
+            int bkMe = store.GetInt("rpsMe", 0), bkYou = store.GetInt("rpsYou", 0), bkDr = store.GetInt("rpsDraw", 0);
+            int win = 0, lose = 0, draw = 0, cheats = 0;
             int[] herMove = new int[3];
             const int Rounds = 3000;
             for (int i = 0; i < Rounds; i++)
@@ -750,21 +752,32 @@ class App
                 if (g2 == null) continue;
                 for (int k = 0; k < 3; k++)
                     if (g2.IndexOf(Lang.T("game.move" + k), StringComparison.Ordinal) >= 0) { herMove[k]++; break; }
-                if (g2.IndexOf(Lang.T("game.rpsWin"), StringComparison.Ordinal) >= 0) win++;
-                else if (g2.IndexOf(Lang.T("game.rpsLose"), StringComparison.Ordinal) >= 0) lose++;
+                if (Game.LastOutcome == "iwin") win++;
+                else if (Game.LastOutcome == "ilose") lose++;
                 else draw++;
+                if (Game.LastWasCheat) cheats++;
             }
             Game.ResetForTest();
-            int exp = Rounds / 3;
-            sb.AppendLine("  猜拳 " + Rounds + " 局（我固定出石头）：胜 " + win + " / 负 " + lose + " / 平 " + draw +
-                          "   （公平应为各约 " + exp + "）");
+            store.Set("rpsMe", bkMe); store.Set("rpsYou", bkYou); store.Set("rpsDraw", bkDr);
+
+            double c = Game.CheatChance;
+            int expWin  = (int)Math.Round(Rounds * (1 - c) / 3.0);          // 你赢
+            int expLose = (int)Math.Round(Rounds * (c + (1 - c) / 3.0));    // 你输（含她耍赖赢的）
+            int expDraw = expWin;
+            sb.AppendLine("  猜拳 " + Rounds + " 局（我固定出石头）：她赢 " + win + " / 你赢 " + lose + " / 平 " + draw);
+            sb.AppendLine("  期望（她 " + (c * 100).ToString("0") + "% 概率耍赖）：她赢 " + expLose + " / 你赢 " + expWin + " / 平 " + expDraw);
             sb.AppendLine("  她出拳分布：石头 " + herMove[0] + " / 剪刀 " + herMove[1] + " / 布 " + herMove[2] +
-                          "   （均匀应为各约 " + exp + "）");
-            // 容差放到 ±25%（约 3σ 以外），只抓"真的不公平"，不会被随机波动误判
-            int tol = exp / 4;
-            bool fair = Math.Abs(win - exp) < tol && Math.Abs(lose - exp) < tol && Math.Abs(draw - exp) < tol &&
-                        Math.Abs(herMove[0] - exp) < tol && Math.Abs(herMove[1] - exp) < tol && Math.Abs(herMove[2] - exp) < tol;
-            sb.AppendLine("  公平性：" + (fair ? "✓ 三种结果各约 1/3，她三种拳也均匀" : "✗ 分布异常（有人把随机改坏了？）"));
+                          "   （布偏多就是在耍赖）");
+
+            double implied = (herMove[2] * 3.0 / Rounds - 1) / 2.0;   // P(布)=c+(1-c)/3  =>  c=(3P-1)/2
+            double impliedCheat = cheats * 1.0 / Rounds;
+            bool cheatOk = Math.Abs(impliedCheat - c) < 0.04;          // ±4%，约 3σ
+            int tol = 90;                                              // 计数容差，约 3.5σ
+            bool distOk = Math.Abs(win - expLose) < tol && Math.Abs(lose - expWin) < tol && Math.Abs(draw - expDraw) < tol;
+            sb.AppendLine("  实测耍赖率：" + (impliedCheat * 100).ToString("0.0") + "%（设定 " + (c * 100).ToString("0") +
+                          "%；由出拳分布反推 " + (implied * 100).ToString("0.0") + "%）  " + (cheatOk ? "✓" : "✗"));
+            sb.AppendLine("  分布检查：" + (distOk ? "✓ 胜/负/平都落在预期范围内" : "✗ 分布异常"));
+            sb.AppendLine("  战绩已还原为 我 " + store.GetInt("rpsMe", 0) + " : 你 " + store.GetInt("rpsYou", 0) + "（自检不污染）");
             sb.AppendLine("  小游戏纯本地，不联网、不调 API");
         }
         catch (Exception ex)
